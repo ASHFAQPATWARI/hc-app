@@ -1,7 +1,19 @@
 <ion-menu [content]="content">
   <ion-header>
-    <ion-toolbar>
-      <ion-title>Menu</ion-title>
+    <ion-toolbar class="sidebar-toolbar">
+      <ion-buttons start class="person-icon">
+        <button ion-button icon-only>
+          <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
+        </button>
+      </ion-buttons>
+
+      <ion-title>Hi Guest</ion-title>
+
+      <ion-buttons end>
+        <button ion-button icon-only>
+          <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
+        </button>
+      </ion-buttons>
     </ion-toolbar>
   </ion-header>
 

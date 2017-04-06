@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-slides pager>
+
+    <ion-slide padding>
+      <!--<img alt="Subscribe" height="40" src="assets/images/subscribe.svg">-->
+      <img src="assets/images/meal.png" class="slide-image" />
+      <h2 class="slide-title">Choose your Subscription</h2>
+      <p>Choose from hundreds of menu, Plan in advance and Enjoy!</p>
+    </ion-slide>
+
+    <ion-slide padding>
+      <!--<img alt="Subscribe" height="40" src="assets/images/subscribe.svg">-->
+      <img src="assets/images/meal.png" class="slide-image" />
+      <h2 class="slide-title">Plan your Subscription <br> Your Way</h2>
+      <p>Choose from hundreds of menu, Plan in advance and Enjoy!</p>
+    </ion-slide>
+
+    <ion-slide padding>
+      <!--<img alt="Subscribe" height="40" src="assets/images/subscribe.svg">-->
+      <img src="assets/images/meal.png" class="slide-image" />
+      <h2 class="slide-title">Enjoy your Meal</h2>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <button ion-button color="primary" full class="login" (click)='openLogin(true)'>
+              Login
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button full color="primary">
+            Sign up
+          </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <p class="skip">
+        <button ion-button clear icon-right color="light" (click)='openLogin()'>
+        Skip
+        <ion-icon name="arrow-forward"></ion-icon>
+      </button>
+      </p>
+    </ion-slide>
+
+  </ion-slides>
+</ion-content>

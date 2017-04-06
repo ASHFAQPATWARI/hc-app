@@ -6,6 +6,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { SubscriptionsPage } from '../pages/subscriptions/subscriptions';
 import { DoctorsPage } from '../pages/doctors/doctors';
+import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 
 @Component({
   templateUrl: 'app.html'
@@ -13,7 +14,7 @@ import { DoctorsPage } from '../pages/doctors/doctors';
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;
+  rootPage: any = HelpSlidesPage; //HomePage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
 
@@ -33,7 +34,8 @@ export class MyApp {
     this.platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
-      this.statusBar.styleDefault();
+      //this.statusBar.styleDefault();
+      this.statusBar.backgroundColorByHexString('#000000');
       this.splashScreen.hide();
     });
   }

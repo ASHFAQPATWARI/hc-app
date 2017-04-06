@@ -1,11 +1,17 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+
+import { Http } from '@angular/http';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { SubscriptionsPage } from '../pages/subscriptions/subscriptions';
 import { SubscriptionDetailsPage } from '../pages/subscription-details/subscription-details';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { DoctorDetailsPage } from '../pages/doctor-details/doctor-details';
+import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -17,10 +23,18 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SubscriptionsPage,
     SubscriptionDetailsPage,
     DoctorsPage,
-    DoctorDetailsPage
+    DoctorDetailsPage,
+    HelpSlidesPage
   ],
   imports: [
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: (createTranslateLoader),
+        deps: [Http]
+      }
+    })
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -29,7 +43,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SubscriptionsPage,
     SubscriptionDetailsPage,
     DoctorsPage,
-    DoctorDetailsPage
+    DoctorDetailsPage,
+    HelpSlidesPage
   ],
   providers: [
     StatusBar,
@@ -38,3 +53,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
   ]
 })
 export class AppModule { }
+
+
+export function createTranslateLoader(http: Http) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}

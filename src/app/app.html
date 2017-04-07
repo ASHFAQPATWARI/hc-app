@@ -10,7 +10,7 @@
       <ion-title>Hi Guest</ion-title>
 
       <ion-buttons end>
-        <button ion-button icon-only>
+        <button ion-button icon-only color="primary">
           <ion-icon ios="ios-settings" md="md-settings"></ion-icon>
         </button>
       </ion-buttons>
@@ -18,8 +18,9 @@
   </ion-header>
 
   <ion-content>
-    <ion-list>
+    <ion-list no-lines>
       <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon [name]="p.icon" item-left></ion-icon>
         {{p.title}}
       </button>
     </ion-list>

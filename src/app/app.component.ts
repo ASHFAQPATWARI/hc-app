@@ -14,7 +14,7 @@ import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HelpSlidesPage; //HomePage;
+  rootPage: any = HomePage;//HelpSlidesPage; //HomePage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
 
@@ -23,9 +23,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Home', component: HomePage, icon: '' },
-      { title: 'Book A Meal', component: SubscriptionsPage, icon: '' },
-      { title: 'Book An Appointment', component: DoctorsPage, icon: '' }
+      { title: 'Home', component: HomePage, icon: 'home' },
+      { title: 'Book A Meal', component: SubscriptionsPage, icon: 'restaurant' },
+      { title: 'Book An Appointment', component: DoctorsPage, icon: 'calendar' }
     ];
 
   }

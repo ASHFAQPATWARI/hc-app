@@ -13,6 +13,7 @@ import { SubscriptionDetailsPage } from '../pages/subscription-details/subscript
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { DoctorDetailsPage } from '../pages/doctor-details/doctor-details';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
+import { Settings } from "../pages/settings/settings";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -25,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SubscriptionDetailsPage,
     DoctorsPage,
     DoctorDetailsPage,
-    HelpSlidesPage
+    HelpSlidesPage,
+    Settings
   ],
   imports: [
     BrowserModule,
@@ -47,7 +49,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SubscriptionDetailsPage,
     DoctorsPage,
     DoctorDetailsPage,
-    HelpSlidesPage
+    HelpSlidesPage,
+    Settings
   ],
   providers: [
     StatusBar,

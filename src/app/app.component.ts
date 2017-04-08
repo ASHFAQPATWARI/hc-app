@@ -14,7 +14,7 @@ import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage;//HelpSlidesPage; //HomePage;
+  rootPage: any = HelpSlidesPage; //HomePage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
 

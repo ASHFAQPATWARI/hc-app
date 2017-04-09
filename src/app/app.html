@@ -19,7 +19,11 @@
 
   <ion-content>
     <ion-list no-lines>
-      <button menuClose ion-item *ngFor="let p of pages" (click)="openPage(p)">
+      <button menuClose ion-item (click)="setRoot('home')">
+        <ion-icon name="home" item-left></ion-icon>
+        Home
+      </button>
+      <button menuClose ion-item *ngFor="let p of pages" (click)="pushPage(p)">
         <ion-icon [name]="p.icon" item-left></ion-icon>
         {{p.title}}
       </button>

@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { Filter } from "../filter/filter";
 
 /*
   Generated class for the Subscriptions page.
@@ -13,10 +14,15 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class SubscriptionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubscriptionsPage');
+  }
+
+  openFilter() {
+    let modal = this.modalCtrl.create(Filter);
+    modal.present();
   }
 
 }

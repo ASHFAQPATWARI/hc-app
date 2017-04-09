@@ -14,6 +14,7 @@ import { DoctorsPage } from '../pages/doctors/doctors';
 import { DoctorDetailsPage } from '../pages/doctor-details/doctor-details';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Settings } from "../pages/settings/settings";
+import { Filter } from "../pages/filter/filter";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,7 +28,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DoctorsPage,
     DoctorDetailsPage,
     HelpSlidesPage,
-    Settings
+    Settings,
+    Filter
   ],
   imports: [
     BrowserModule,
@@ -50,7 +52,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DoctorsPage,
     DoctorDetailsPage,
     HelpSlidesPage,
-    Settings
+    Settings,
+    Filter
   ],
   providers: [
     StatusBar,

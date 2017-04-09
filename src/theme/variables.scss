@@ -26,11 +26,12 @@ $loading-md-spinner-color: #40403e !default;
 // The "primary" color is the only required color in the map.
 
 $colors: (
-  primary :   #FFE81C, //#387ef5,
+  primary : #40403e, //#387ef5,
   secondary:  #32db64,
   danger:     #f53d3d,
   light:      #f4f4f4,
-  dark :      #40403e
+  dark :      #40403e,
+  yellow: #FFE81C
 );
 
 // App iOS Variables

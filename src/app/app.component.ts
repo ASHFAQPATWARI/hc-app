@@ -48,7 +48,7 @@ export class MyApp {
 
   setRoot(page) {
     let component;
-    switch(page){
+    switch (page) {
       case 'home':
         component = HomePage;
     }
@@ -56,7 +56,7 @@ export class MyApp {
   }
 
   openSettings() {
-    this.nav.setRoot(Settings);
+    this.nav.push(Settings);
   }
 
 }

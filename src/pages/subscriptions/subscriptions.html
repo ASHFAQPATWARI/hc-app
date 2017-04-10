@@ -11,19 +11,19 @@
   </ion-navbar>
 </ion-header>
 <ion-content>
-  <ion-card class="item-card" *ngFor="let item of [1,2,3]">
+  <ion-card class="item-card" *ngFor="let sub of subscriptions | async">
     <img alt="food" src="assets/images/fast-food.jpg">
     <ion-card-content no-padding>
       <div class="item-details">
       </div>
       <ion-card-title>
-        <b>Bread Butter Jam</b>
+        <b>{{sub.name}}</b>
       </ion-card-title>
-      <p class="item-desc">With pinch of lemon juice</p>
+      <p class="item-desc">{{sub.desc}}</p>
       <ion-grid>
         <ion-row class="no-v-padding">
           <ion-col align-self-center>
-            KD 30.000
+            KD {{sub.price}}
           </ion-col>
           <ion-col>
             <ion-buttons right>

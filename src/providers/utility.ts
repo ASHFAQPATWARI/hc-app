@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
+import { LoadingController, Loading } from "ionic-angular";
 import 'rxjs/add/operator/map';
 
 /*
@@ -11,8 +12,18 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Utility {
   public apiHost = 'http://198.37.116.215:9000/api/';
-  constructor(public http: Http) {
+  loading: Loading;
+  constructor(public http: Http, public loadingCtrl: LoadingController) {
     console.log('Hello Utility Provider');
+  }
+
+  createLoading() {
+    this.loading = this.loadingCtrl.create();
+    this.loading.present();
+  }
+
+  dismissLoading() {
+    this.loading.dismissAll();
   }
 
 }

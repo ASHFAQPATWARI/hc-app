@@ -3,6 +3,8 @@ import { NavController, NavParams, ModalController, ActionSheetController, Toast
 import { Filter } from "../filter/filter";
 import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
 
+import { Subscriptions } from "../../providers/subscriptions";
+
 /*
   Generated class for the Subscriptions page.
 
@@ -14,9 +16,11 @@ import { SubscriptionDetailsPage } from "../subscription-details/subscription-de
   templateUrl: 'subscriptions.html'
 })
 export class SubscriptionsPage {
+  public subscriptions;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
+    public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions) {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController) { 
-    
+    this.subscriptions = this.subscriptionsService.getSubscriptions();
   }
 
   ionViewDidLoad() {

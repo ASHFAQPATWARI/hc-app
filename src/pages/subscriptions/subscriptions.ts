@@ -15,7 +15,9 @@ import { SubscriptionDetailsPage } from "../subscription-details/subscription-de
 })
 export class SubscriptionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController) { 
+    
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubscriptionsPage');

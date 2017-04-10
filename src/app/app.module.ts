@@ -15,9 +15,12 @@ import { DoctorDetailsPage } from '../pages/doctor-details/doctor-details';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Settings } from "../pages/settings/settings";
 import { Filter } from "../pages/filter/filter";
+import { Cart } from "../pages/cart/cart";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { Subscriptions } from "../providers/subscriptions";
+import { Utility } from "../providers/utility";
 
 @NgModule({
   declarations: [
@@ -29,7 +32,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DoctorDetailsPage,
     HelpSlidesPage,
     Settings,
-    Filter
+    Filter,
+    Cart
   ],
   imports: [
     BrowserModule,
@@ -53,12 +57,15 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     DoctorDetailsPage,
     HelpSlidesPage,
     Settings,
-    Filter
+    Filter,
+    Cart
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Subscriptions,
+    Utility
   ]
 })
 export class AppModule { }

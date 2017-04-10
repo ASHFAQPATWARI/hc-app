@@ -10,6 +10,29 @@
     <!--</ion-toolbar>-->
   </ion-navbar>
 </ion-header>
-<ion-content padding>
-
+<ion-content>
+  <ion-card class="item-card" *ngFor="let item of [1,2,3]">
+    <img alt="food" src="assets/images/fast-food.jpg">
+    <ion-card-content no-padding>
+      <div class="item-details">
+      </div>
+      <ion-card-title>
+        Bread Butter Jam
+      </ion-card-title>
+      <ion-grid>
+        <ion-row class="no-v-padding">
+          <ion-col align-self-center>
+            KD 30.000
+          </ion-col>
+          <ion-col>
+            <ion-buttons right>
+              <button ion-button icon-only clear>
+              <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
+            </button>
+            </ion-buttons>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

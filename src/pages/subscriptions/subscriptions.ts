@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ActionSheetController, ToastController } from 'ionic-angular';
 import { Filter } from "../filter/filter";
+import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
 
 /*
   Generated class for the Subscriptions page.
@@ -14,7 +15,7 @@ import { Filter } from "../filter/filter";
 })
 export class SubscriptionsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) { }
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController) { }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubscriptionsPage');
@@ -25,4 +26,41 @@ export class SubscriptionsPage {
     modal.present();
   }
 
+  openActionSheet() {
+    let actionSheet = this.actionSheetCtrl.create({
+      title: 'Proceed With',
+      buttons: [
+        {
+          text: 'Show Details',
+          icon: 'information-circle',
+          handler: () => {
+            actionSheet.onDidDismiss(() => {
+              this.navCtrl.push(SubscriptionDetailsPage);
+            });
+          }
+        }, {
+          text: 'Add to Cart',
+          icon: 'cart',
+          handler: () => {
+            actionSheet.onDidDismiss(() => {
+              this.showToastWithCloseButton();
+            });
+          }
+        }, {
+          text: 'Cancel',
+          icon: 'close',
+        }
+      ]
+    });
+    actionSheet.present();
+  }
+
+  showToastWithCloseButton() {
+    const toast = this.toastCntrl.create({
+      message: 'Added to Cart Successfully',
+      showCloseButton: true,
+      closeButtonText: 'Ok'
+    });
+    toast.present();
+  }
 }

@@ -4,7 +4,7 @@
       Choose Meal By
     </ion-title>
     <ion-buttons start>
-      <button ion-button (click)="dismiss()">
+      <button ion-button (click)="dismiss()" class="close-icon">
         <ion-icon name="close" ></ion-icon>
       </button>
     </ion-buttons>
@@ -14,7 +14,7 @@
 <ion-content>
   <ion-card>
     <ion-card-header>
-      Categories
+      <span class="semi-bold">Categories</span>
     </ion-card-header>
     <ion-list>
       <ion-item>
@@ -37,7 +37,7 @@
   </ion-card>
   <ion-card>
     <ion-card-header>
-      Duraion
+      <span class="semi-bold">Duration</span>
     </ion-card-header>
     <ion-list>
       <ion-item>

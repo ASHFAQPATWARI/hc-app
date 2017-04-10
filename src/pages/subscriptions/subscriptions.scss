@@ -1,12 +1,17 @@
 page-subscriptions {
+  ion-content {
+    background: $light-grey !important;
+  }
   .card-title {
     display: block;
+    ion-content {
+      background: $light-grey !important;
+    }
     margin: 2px 0 2px;
     padding: 10px 7px 10px 10px;
     font-size: 1.6rem;
     line-height: 1.2;
     color: #222;
-    border-bottom: 1px solid #dcdcdc;
   }
   button {
     margin: 0;
@@ -14,15 +19,21 @@ page-subscriptions {
     font-size: 1.6rem;
   }
   ion-col {
-    color: #999;
+    color: #5f5f5c;
   }
   .no-v-padding ion-col {
     padding-top: 0;
     padding-bottom: 0;
   }
+  .item-desc {
+    padding: 0 10px 10px;
+    font-size: 11px;
+    border-bottom: 1px solid #dcdcdc;
+  }
   .item-card {
     ion-icon {
-      color: #999;
+      color: #5f5f5c;
+      padding-right: 0;
     }
   }
 }

@@ -84,5 +84,31 @@ $toolbar-md-button-color: $yellow-color;
 // Fonts
 // --------------------------------------------------
 
-@import "roboto";
-@import "noto-sans";
+//@import "roboto";
+//@import "noto-sans";
+
+
+@font-face {
+  font-family: 'Avenir_Bold';
+  src: url('../assets/fonts/AvenirNextLTPro-Bold.woff2') format('woff2') ;
+}
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('../assets/fonts/AvenirNextLTPro-Regular.woff2') format('woff2');
+}
+@font-face {
+  font-family: 'Avenir_Light';
+  src: url('../assets/fonts/AvenirNextLTPro-UltLtCn.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: 'Avenir_SemiBold';
+  src: url('../assets/fonts/AvenirNextLTPro-MediumCn.woff2') format('woff2');
+}
+
+$font-family-md-base: "Avenir" !default;
+$font-family-ios-base: "Avenir" !default;
+
+
+

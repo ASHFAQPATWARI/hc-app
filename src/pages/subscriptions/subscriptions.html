@@ -17,8 +17,9 @@
       <div class="item-details">
       </div>
       <ion-card-title>
-        Bread Butter Jam
+        <b>Bread Butter Jam</b>
       </ion-card-title>
+      <p class="item-desc">With pinch of lemon juice</p>
       <ion-grid>
         <ion-row class="no-v-padding">
           <ion-col align-self-center>
@@ -26,7 +27,7 @@
           </ion-col>
           <ion-col>
             <ion-buttons right>
-              <button ion-button icon-only clear>
+              <button ion-button icon-only clear (click)='openActionSheet()'>
               <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
             </button>
             </ion-buttons>

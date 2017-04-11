@@ -40,7 +40,10 @@ import { Utility } from "../providers/utility";
   imports: [
     BrowserModule,
     HttpModule,
-    IonicModule.forRoot(MyApp),
+    IonicModule.forRoot(MyApp, {
+      scrollAssist: false,
+      autoFocusAssist: false
+    }),
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,

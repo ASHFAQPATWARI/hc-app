@@ -1,0 +1,43 @@
+page-login {
+  ion-content {
+    background: $light-grey !important;
+    overflow: hidden;
+  }
+  .login-header {
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .login-btn {
+    margin: 4rem 0;
+    border-radius: 0;
+  }
+  ion-item {
+    border-bottom: 1px solid #dedede !important;
+  }
+  .item-inner {
+    border-bottom: none !important;
+  }
+  .item-block {
+    min-height: 5.4rem !important;
+  }
+  .register-btn {
+    margin-top: 14rem;
+    button {
+      padding: 0 2.1em;
+      height: 3.6rem;
+    }
+  }
+  ion-footer .toolbar-background-md {
+    border: none !important;
+    background: #f6f6f6 !important;
+  }
+  .item-inner {
+    box-shadow: none !important;
+  }
+  .item-input.input-has-focus:last-child {
+    box-shadow: none !important;
+  }
+  .forgot-password {
+    font-size: 13px;
+  }
+}

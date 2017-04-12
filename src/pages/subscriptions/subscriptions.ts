@@ -32,16 +32,16 @@ export class SubscriptionsPage {
     modal.present();
   }
 
-  openActionSheet() {
+  openActionSheet(sub) {
     let actionSheet = this.actionSheetCtrl.create({
-      title: 'Proceed With',
+      title: sub.name,
       buttons: [
         {
           text: 'Show Details',
           icon: 'information-circle',
           handler: () => {
             actionSheet.onDidDismiss(() => {
-              this.navCtrl.push(SubscriptionDetailsPage);
+              this.navCtrl.push(SubscriptionDetailsPage, {sub:sub});
             });
           }
         }, {

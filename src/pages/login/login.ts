@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, ModalController } from 'ionic-angular';
+import { Register } from "../register/register";
 
 /**
  * Generated class for the Login page.
@@ -13,11 +14,16 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class Login {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Login');
+  }
+
+  openRegister() {
+    let modal = this.modalCtrl.create(Register);
+    modal.present();
   }
 
 }

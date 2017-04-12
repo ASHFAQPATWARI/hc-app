@@ -12,8 +12,10 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'subscription-details.html'
 })
 export class SubscriptionDetailsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public subsciption;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.subsciption = this.navParams.get('sub')
+   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubscriptionDetailsPage');

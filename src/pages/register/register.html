@@ -21,53 +21,66 @@
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>First Name</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Last Name</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Email</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Mobile</ion-label>
-          <ion-input></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col>
-        <ion-item>
-          <ion-label color="primary" floating>Confirm Password</ion-label>
-          <ion-input type="password"></ion-input>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-  <div padding-horizontal>
-    <button ion-button block large color='lightGreen' round=false class="register-btn" (click)='register()'>Register</button>
-  </div>
+  <ion-card>
+
+    <ion-card-header>
+      Please provide the following details
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="register()" #registerForm="ngForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>First Name</ion-label>
+                <ion-input required></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Last Name</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Email</ion-label>
+                <ion-input></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Mobile</ion-label>
+                <ion-input type="tel"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Password</ion-label>
+                <ion-input type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Confirm Password</ion-label>
+                <ion-input type="password"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </form>
+      <div padding-horizontal>
+        <button type="submit" ion-button block large color='lightGreen' round=false class="register-btn">Register</button>
+      </div>
+    </ion-card-content>
+
+  </ion-card>
+
 </ion-content>

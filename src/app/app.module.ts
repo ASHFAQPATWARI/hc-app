@@ -1,6 +1,7 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { FormsModule } from '@angular/forms';
 
 import { HttpModule, Http } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
@@ -42,6 +43,7 @@ import { Utility } from "../providers/utility";
   imports: [
     BrowserModule,
     HttpModule,
+    FormsModule,
     IonicModule.forRoot(MyApp, {
       scrollAssist: false,
       autoFocusAssist: false

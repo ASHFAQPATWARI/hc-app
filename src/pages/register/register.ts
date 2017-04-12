@@ -22,6 +22,7 @@ export class Register {
 
   register() {
     console.log(' Register clicked');
+    this.navCtrl.popToRoot();
   }
 
   dismiss() {

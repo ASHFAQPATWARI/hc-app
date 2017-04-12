@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { HomePage } from "../home/home";
 
+
 /*
   Generated class for the HelpSlides page.
 
@@ -26,6 +27,10 @@ export class HelpSlidesPage implements OnDestroy {
       this.navCtrl.setRoot(HomePage, { openLogin: true });
     else 
       this.navCtrl.setRoot(HomePage);
+  }
+
+  openRegister() {
+      this.navCtrl.setRoot(HomePage, { openRegister: true });
   }
 
   ngOnDestroy() {

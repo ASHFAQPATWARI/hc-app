@@ -21,9 +21,12 @@ export class Login {
     console.log('ionViewDidLoad Login');
   }
 
+  login() {
+    console.log('Login clicked')
+  }
+
   openRegister() {
-    let modal = this.modalCtrl.create(Register);
-    modal.present();
+    this.navCtrl.push(Register);
   }
 
 }

@@ -26,8 +26,7 @@ export class MyApp {
     // used for an example of ngFor and navigation
     this.pages = [
       { title: 'Book A Meal', component: SubscriptionsPage, icon: 'restaurant' },
-      { title: 'Book An Appointment', component: DoctorsPage, icon: 'calendar' },
-      { title: 'Login', component: Login, icon: 'login' }
+      { title: 'Book An Appointment', component: DoctorsPage, icon: 'calendar' }
     ];
 
   }
@@ -59,6 +58,10 @@ export class MyApp {
 
   openSettings() {
     this.nav.push(Settings);
+  }
+
+  openLogin() {
+    this.nav.push(Login);
   }
 
 }

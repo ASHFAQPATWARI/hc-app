@@ -16,7 +16,7 @@
 <ion-content>
   <ion-card>
     <ion-card-content no-padding>
-      <ion-slides>
+      <ion-slides pager>
         <ion-slide>
           <img src="assets/images/food3.jpg" class="slide-image" />
         </ion-slide>
@@ -32,20 +32,46 @@
         <div class="sub-head">
           Description
         </div>
+        <p text-justify>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+          aliqua.
+        </p>
         <ion-list>
           <ion-item>
             <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
-            Max freezes.no: 2
+            Max freezes.no: {{subsciption.totalfreeze}}
           </ion-item>
           <ion-item>
             <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
-            Max freezes.no: 2
+            Max freezes days: {{subsciption.freezedays}}
           </ion-item>
           <ion-item>
             <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
-            Max freezes.no: 2
+            Total days: {{subsciption.days}}
           </ion-item>
         </ion-list>
+        <div class="sub-head">
+          Full Membership includes
+        </div>
+        <ion-list>
+          <ion-item *ngFor="let cat of subsciption.cats">
+            <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
+            {{cat.name}}
+          </ion-item>
+        </ion-list>
+        <ion-grid>
+          <ion-row class="no-v-padding">
+            <ion-col align-self-center>
+              KD 12
+            </ion-col>
+            <ion-col>
+              <ion-buttons right>
+                <button ion-button icon-only clear >
+              <ion-icon ios="ios-add-circle-outline" md="ios-add-circle-outline"></ion-icon>
+            </button>
+              </ion-buttons>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
       </div>
 
 

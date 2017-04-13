@@ -51,3 +51,13 @@
   border-bottom: 1px solid #dcdcdc;
   padding: 10px 5px;
 }
+.swiper-pagination-bullet {
+  background: #fff;;
+  opacity: .6;
+}
+.swiper-pagination-bullet-active {
+  background: $yellow-color;
+  opacity: 1;
+}
+
+

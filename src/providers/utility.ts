@@ -12,9 +12,9 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Utility {
   public apiHost = 'http://198.37.116.215:9000/api/';
+  private customerObj: any;
   loading: Loading;
   constructor(public http: Http, public loadingCtrl: LoadingController) {
-    console.log('Hello Utility Provider');
   }
 
   createLoading() {
@@ -24,6 +24,40 @@ export class Utility {
 
   dismissLoading() {
     this.loading.dismissAll();
+  }
+
+  setToken(r) {
+    this.setCustomerObj(r);
+    localStorage.setItem('token', JSON.stringify(r));
+  }
+
+  getToken(): any {
+    const token = localStorage.getItem('token');
+    if(token) {
+      const d1 = new Date();
+      const d2 = new Date(token['.expires']);
+      const notexpired = d1.getTime() < d2.getTime();
+      if (notexpired) {
+        return JSON.parse(token);
+      } else {
+        return null;
+      }
+    } else {
+      return null;
+    }
+  }
+
+  doLogout() {
+    localStorage.removeItem('authorizationData');
+    this.customerObj = null;
+  }
+
+  setCustomerObj(obj) {
+    this.customerObj = obj;
+  }
+
+  getCustomerObj(): any {
+    return this.customerObj;
   }
 
 }

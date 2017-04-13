@@ -81,7 +81,16 @@ import { LoginService } from "../providers/login";
     LoginService
   ]
 })
-export class AppModule { }
+export class AppModule {
+
+  constructor(public utility: Utility) {
+    const token = this.utility.getToken();
+    if (token) {
+      this.utility.setCustomerObj(token);
+    }
+  }
+
+ }
 
 
 export function createTranslateLoader(http: Http) {

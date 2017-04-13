@@ -32,6 +32,7 @@ export class LoginService {
     return this.http.post(`${this.apiHost}token`, "userName=" + encodeURIComponent(params.username) + "&password=" + encodeURIComponent(params.password) + "&grant_type=password", options)
       .map((r: Response) => r.json().result)
       .do((r) => {
+        localStorage.setItem('authorizationData', JSON.stringify(r) );
         this.utility.dismissLoading();
       });
 

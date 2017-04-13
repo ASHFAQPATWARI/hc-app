@@ -14,8 +14,12 @@ import { NavController, NavParams } from 'ionic-angular';
 export class SubscriptionDetailsPage {
   public subsciption;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-    this.subsciption = this.navParams.get('sub')
-   }
+    //this.subsciption = this.navParams.get('sub');
+    //console.log('sub ->,', this.subsciption);
+    this.subsciption = {
+      name: '30 Days Meal'
+    }
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubscriptionDetailsPage');

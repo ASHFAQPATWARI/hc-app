@@ -24,14 +24,16 @@ export class LoginService {
     this.utility.createLoading();
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
-    let options : RequestOptionsArgs = headers;
+    let options: RequestOptionsArgs = headers;
 
     console.log('still in login');
     //let args = { username: encodeURIComponent(params.username), password: encodeURIComponent(params.password), grant_type: 'password' };
 
-    return this.http.post(`${this.apiHost}token`, "userName=" + encodeURIComponent(params.username) + "&password=" + encodeURIComponent(params.password) + "&grant_type=password", options )
+    return this.http.post(`${this.apiHost}token`, "userName=" + encodeURIComponent(params.username) + "&password=" + encodeURIComponent(params.password) + "&grant_type=password", options)
       .map((r: Response) => r.json().result)
-      .do((r) => this.utility.dismissLoading());
+      .do((r) => {
+        this.utility.dismissLoading();
+      });
 
   };
 

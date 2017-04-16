@@ -13,7 +13,11 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class DoctorDetailsPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public doctor;
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.doctor = this.navParams.get('doctor');
+    console.log('doctor ->,', this.doctor);
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DoctorDetailsPage');

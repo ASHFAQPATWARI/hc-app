@@ -7,12 +7,74 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>doctor-details</ion-title>
+    <ion-title>{{doctor.name}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
 
+    <ion-item>
+      <ion-avatar item-left>
+        <img [src]='doctor.img'>
+      </ion-avatar>
+      <h2>{{doctor.name}}</h2>
+      <p>{{doctor.spec}}</p>
+    </ion-item>
+
+
+    <ion-card-content>
+      <p>Wait a minute. Wait a minute, Doc. Uhhh... Are you telling me that you built a time machine... out of a DeLorean?!
+        Whoa. This is heavy.</p>
+      <p class="secondary-title">Book an Appointment</p>
+      <ion-row>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label>Select Day</ion-label>
+              <ion-select [(ngModel)]="gaming">
+                <ion-option value="nes">Sunday</ion-option>
+                <ion-option value="n64">Monday</ion-option>
+                <ion-option value="ps">Tuesday</ion-option>
+                <ion-option value="genesis">Wednesday</ion-option>
+                <ion-option value="saturn">Thursday</ion-option>
+                <ion-option value="snes">Friday</ion-option>
+                <ion-option value="snes">Saturday</ion-option>
+                <ion-option value="snes">Sunday</ion-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+        </ion-col>
+        <ion-col>
+          <ion-list>
+            <ion-item>
+              <ion-label>Available Slot</ion-label>
+              <ion-select [(ngModel)]="gaming">
+                <ion-option value="nes">10:00- 10:30</ion-option>
+                <ion-option value="n64">11:00- 11:30</ion-option>
+                <ion-option value="ps">11:30- 12:00</ion-option>
+
+              </ion-select>
+            </ion-item>
+          </ion-list>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <button ion-button icon-left block>
+        <ion-icon name="md-time"></ion-icon>
+        <div>Book </div>
+      </button>
+        </ion-col>
+
+      </ion-row>
+    </ion-card-content>
+
+
+
+
+  </ion-card>
 </ion-content>

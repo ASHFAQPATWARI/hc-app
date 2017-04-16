@@ -25,6 +25,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { Subscriptions } from "../providers/subscriptions";
 import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
+import { DoctorService } from "../providers/doctors";
 
 @NgModule({
   declarations: [
@@ -78,7 +79,8 @@ import { LoginService } from "../providers/login";
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     Subscriptions,
     Utility,
-    LoginService
+    LoginService,
+    DoctorService
   ]
 })
 export class AppModule {
@@ -90,7 +92,7 @@ export class AppModule {
     }
   }
 
- }
+}
 
 
 export function createTranslateLoader(http: Http) {

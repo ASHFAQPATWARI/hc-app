@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { DoctorService } from "../../providers/doctors";
+import { DoctorDetailsPage } from "../doctor-details/doctor-details";
 
 /*
   Generated class for the Doctors page.
@@ -12,11 +14,17 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'doctors.html'
 })
 export class DoctorsPage {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {}
+  public doctors;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public doctorService: DoctorService) {
+    this.doctors = this.doctorService.getDoctors();
+  }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad DoctorsPage');
+  }
+
+  opanDoctorDetail(doctor) {
+    this.navCtrl.push(DoctorDetailsPage, { doctor: doctor });
   }
 
 }

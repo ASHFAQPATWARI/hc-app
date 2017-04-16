@@ -2,4 +2,8 @@ page-doctors {
   ion-content {
     background: $light-grey !important;
   }
+    ion-item.bb {
+    border-bottom: 1px solid #dcdcdc !important;
+    margin-bottom: 7px !important;
+  }
 }

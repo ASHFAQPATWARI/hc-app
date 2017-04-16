@@ -16,7 +16,7 @@ import { Login } from "../pages/login/login";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage; //HelpSlidesPage
+  rootPage: any = HelpSlidesPage;//HomePage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
 

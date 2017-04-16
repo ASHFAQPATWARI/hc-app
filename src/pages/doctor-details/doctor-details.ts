@@ -16,7 +16,6 @@ export class DoctorDetailsPage {
   public doctor;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.doctor = this.navParams.get('doctor');
-    console.log('doctor ->,', this.doctor);
   }
 
   ionViewDidLoad() {

@@ -33,7 +33,7 @@ export class Utility {
 
   getToken(): any {
     const token = localStorage.getItem('token');
-    if(token) {
+    if (token) {
       const d1 = new Date();
       const d2 = new Date(token['.expires']);
       const notexpired = d1.getTime() < d2.getTime();

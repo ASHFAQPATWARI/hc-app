@@ -15,21 +15,18 @@ import { LoginService } from "../../providers/login";
 })
 export class Login {
 
+  credentials = {
+    username: '',
+    password: ''
+  }
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loginService: LoginService) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad Login');
-  }
-
   login() {
-    let params = {
-      username: 'ashfaqpatwari@gmail.com',
-      password: '123456'
-    }
-    this.loginService.doLogin(params).subscribe(
+    this.loginService.doLogin(this.credentials).subscribe(
       data => {
-        console.log('login data', data);
+
       }
     );
   }

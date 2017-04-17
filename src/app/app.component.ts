@@ -9,8 +9,6 @@ import { SubscriptionsPage } from '../pages/subscriptions/subscriptions';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Login } from "../pages/login/login";
-import { Cart } from "../pages/cart/cart";
-import { Checkout } from "../pages/checkout/checkout";
 
 @Component({
   templateUrl: 'app.html'
@@ -18,7 +16,7 @@ import { Checkout } from "../pages/checkout/checkout";
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
-  rootPage: any = HomePage; //HelpSlidesPage
+  rootPage: any = HelpSlidesPage; //HomePage; //
 
   pages: Array<{ title: string, component: any, icon: string }>;
 
@@ -64,10 +62,6 @@ export class MyApp {
 
   openLogin() {
     this.nav.push(Login);
-  }
-
-  openCart() {
-    this.nav.push(Checkout);
   }
 
 }

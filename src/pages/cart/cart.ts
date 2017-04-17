@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { Checkout } from "../checkout/checkout";
+
 /**
  * Generated class for the Cart page.
  *
@@ -18,6 +20,10 @@ export class Cart {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Cart');
+  }
+
+  proceedToCheckout() {
+    this.navCtrl.push(Checkout);
   }
 
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ActionSheetController, ToastController } from 'ionic-angular';
 import { Filter } from "../filter/filter";
 import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
+import { Cart } from "../cart/cart";
 
 import { Subscriptions } from "../../providers/subscriptions";
 
@@ -25,6 +26,10 @@ export class SubscriptionsPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubscriptionsPage');
+  }
+
+  openCart() {
+    this.navCtrl.push(Cart);
   }
 
   openFilter() {

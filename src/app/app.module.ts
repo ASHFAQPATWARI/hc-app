@@ -20,12 +20,14 @@ import { Cart } from "../pages/cart/cart";
 import { Login } from "../pages/login/login";
 import { Register } from "../pages/register/register";
 
+
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { Subscriptions } from "../providers/subscriptions";
 import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
 import { DoctorService } from "../providers/doctors";
+
 
 @NgModule({
   declarations: [

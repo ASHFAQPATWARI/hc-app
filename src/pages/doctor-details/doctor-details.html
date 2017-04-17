@@ -16,7 +16,7 @@
 <ion-content>
   <ion-card>
 
-    <ion-item class="bb"> 
+    <ion-item class="bb">
       <ion-avatar item-left>
         <img [src]='doctor.img'>
       </ion-avatar>
@@ -32,8 +32,8 @@
         <ion-col>
           <ion-list>
             <ion-item>
-              <ion-label>Select Day</ion-label>
-              <ion-select [(ngModel)]="gaming">
+              <ion-label>Day</ion-label>
+              <ion-select >
                 <ion-option value="nes">Sunday</ion-option>
                 <ion-option value="n64">Monday</ion-option>
                 <ion-option value="ps">Tuesday</ion-option>
@@ -50,8 +50,8 @@
         <ion-col>
           <ion-list>
             <ion-item>
-              <ion-label>Select Slot</ion-label>
-              <ion-select [(ngModel)]="gaming">
+              <ion-label>Slot</ion-label>
+              <ion-select>
                 <ion-option value="nes">10:00- 10:30</ion-option>
                 <ion-option value="n64">11:00- 11:30</ion-option>
                 <ion-option value="ps">11:30- 12:00</ion-option>
@@ -62,7 +62,7 @@
         </ion-col>
       </ion-row>
       <ion-row>
-        <ion-col >
+        <ion-col>
           <button ion-button icon-left block>
         <ion-icon name="md-time"></ion-icon>
         <div>Book </div>

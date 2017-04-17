@@ -1,3 +1,20 @@
 page-cart {
-
+  .cart ion-item {
+    //border-bottom: 1px solid #dcdcdc;
+  }
+  .item {
+    padding-right: 0 !important;
+  }
+  .cart-footer .toolbar-background {
+    /* border-color: #b2b2b2; */
+    background: transparent;
+  }
+  .list-ios>.item-block:first-child {
+    border-top: 0;
+  }
+  .cart-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 32px;
+  }
 }

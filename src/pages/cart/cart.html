@@ -7,12 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>cart</ion-title>
+    <ion-title>Review Order</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content class="cart" padding-vertical>
+  <ion-list>
+    <ion-item>
+      <ion-icon name="trash" item-left></ion-icon>
+      30 Days Meal
+      <!--<ion-icon name="rose" item-right></ion-icon>-->
+      <span item-right>30 KD</span>
+    </ion-item>
+    <ion-item>
+      <ion-icon name="trash" item-left></ion-icon>
+      30 Days Meal
+      <!--<ion-icon name="rose" item-right></ion-icon>-->
+      <span item-right>30 KD</span>
+    </ion-item>
+  </ion-list>
 
+  <ion-footer class="cart-footer" >
+    <ion-toolbar padding-horizontal>
+      <button ion-button color="yellow" full (click)='proceedToCheckout()' >
+              Proceed to Checkout
+            </button>
+    </ion-toolbar>
+  </ion-footer>
 </ion-content>

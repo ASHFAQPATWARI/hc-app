@@ -20,6 +20,7 @@ import { Cart } from "../pages/cart/cart";
 import { Login } from "../pages/login/login";
 import { Register } from "../pages/register/register";
 import { Checkout } from "../pages/checkout/checkout";
+import { Thankyou } from "../pages/thankyou/thankyou";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -44,7 +45,8 @@ import { CheckoutService } from "../providers/checkout-service";
     Cart,
     Login,
     Register,
-    Checkout
+    Checkout,
+    Thankyou
   ],
   imports: [
     BrowserModule,
@@ -76,7 +78,8 @@ import { CheckoutService } from "../providers/checkout-service";
     Cart,
     Login,
     Register,
-    Checkout
+    Checkout,
+    Thankyou
   ],
   providers: [
     StatusBar,

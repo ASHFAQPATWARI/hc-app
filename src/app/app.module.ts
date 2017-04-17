@@ -19,6 +19,7 @@ import { Filter } from "../pages/filter/filter";
 import { Cart } from "../pages/cart/cart";
 import { Login } from "../pages/login/login";
 import { Register } from "../pages/register/register";
+import { Checkout } from "../pages/checkout/checkout";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -27,6 +28,7 @@ import { Subscriptions } from "../providers/subscriptions";
 import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
 import { DoctorService } from "../providers/doctors";
+import { CheckoutService } from "../providers/checkout-service";
 
 @NgModule({
   declarations: [
@@ -41,7 +43,8 @@ import { DoctorService } from "../providers/doctors";
     Filter,
     Cart,
     Login,
-    Register
+    Register,
+    Checkout
   ],
   imports: [
     BrowserModule,
@@ -72,7 +75,8 @@ import { DoctorService } from "../providers/doctors";
     Filter,
     Cart,
     Login,
-    Register
+    Register,
+    Checkout
   ],
   providers: [
     StatusBar,
@@ -87,7 +91,8 @@ import { DoctorService } from "../providers/doctors";
     Subscriptions,
     Utility,
     LoginService,
-    DoctorService
+    DoctorService,
+    CheckoutService
   ]
 })
 export class AppModule {

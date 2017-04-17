@@ -6,6 +6,8 @@ import { Cart } from "../cart/cart";
 
 import { Subscriptions } from "../../providers/subscriptions";
 
+import * as _ from "lodash";
+
 /*
   Generated class for the Subscriptions page.
 
@@ -21,7 +23,11 @@ export class SubscriptionsPage {
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions) {
 
-    this.subscriptions = this.subscriptionsService.getSubscriptions();
+    this.subscriptionsService.getSubscriptions().subscribe(
+      data => {
+        this.subscriptions = data;
+      }
+    );
   }
 
   ionViewDidLoad() {
@@ -33,7 +39,24 @@ export class SubscriptionsPage {
   }
 
   openFilter() {
-    let modal = this.modalCtrl.create(Filter);
+    let filterObject = {
+      categories: [],
+      durations: []
+    };
+    _.forEach(this.subscriptions, function (item, index) {
+      filterObject.categories = filterObject.categories.concat(item.cats);
+      filterObject.durations.push(
+        {
+          id: index,
+          days: item.days,
+          selected: false
+        }
+      );
+    })
+
+    filterObject.categories = _.uniqBy(filterObject.categories, 'id');
+    filterObject.durations = _.uniqBy(filterObject.durations, 'days');
+    let modal = this.modalCtrl.create(Filter, { filterObject: filterObject});
     modal.present();
   }
 

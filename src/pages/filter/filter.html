@@ -17,21 +17,9 @@
       <span class="semi-bold">Categories</span>
     </ion-card-header>
     <ion-list>
-      <ion-item>
-        <ion-label>Breakfast</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Lunch</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Dinner</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>Brunch</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
+      <ion-item *ngFor="let cat of filterObject.categories">
+        <ion-label>{{cat.name}}</ion-label>
+        <ion-checkbox [(ngModel)]="cat.selected" item-right></ion-checkbox>
       </ion-item>
     </ion-list>
   </ion-card>
@@ -40,21 +28,9 @@
       <span class="semi-bold">Duration</span>
     </ion-card-header>
     <ion-list>
-      <ion-item>
-        <ion-label>3 Days</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>6 Days</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>30 Days</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
-      </ion-item>
-      <ion-item>
-        <ion-label>60 Days</ion-label>
-        <ion-checkbox item-right></ion-checkbox>
+      <ion-item *ngFor="let duration of filterObject.durations">
+        <ion-label>{{duration.days}} Days</ion-label>
+        <ion-checkbox [(ngModel)]="binding" item-right></ion-checkbox>
       </ion-item>
     </ion-list>
   </ion-card>

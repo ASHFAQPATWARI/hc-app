@@ -24,9 +24,8 @@ export class LoginService {
     let headers = new Headers();
     headers.append('Content-Type', 'application/x-www-form-urlencoded');
     let options: RequestOptionsArgs = headers;
-
     return this.http.post(`${this.apiHost}token`, "userName=" + encodeURIComponent(params.username) + "&password=" + encodeURIComponent(params.password) + "&grant_type=password", options)
-      .map((r: Response) => r.json().result)
+      .map((r: Response) => r.json())
       .do((r) => {
         this.utility.setToken(r);
         this.utility.dismissLoading();

@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 
-import { HttpModule, Http } from '@angular/http';
+import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
@@ -19,14 +19,17 @@ import { Filter } from "../pages/filter/filter";
 import { Cart } from "../pages/cart/cart";
 import { Login } from "../pages/login/login";
 import { Register } from "../pages/register/register";
+import { Checkout } from "../pages/checkout/checkout";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
+import { HttpInterceptorService } from "../providers/http-interceptor";
 import { Subscriptions } from "../providers/subscriptions";
 import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
 import { DoctorService } from "../providers/doctors";
+import { CheckoutService } from "../providers/checkout-service";
 
 
 @NgModule({
@@ -42,7 +45,8 @@ import { DoctorService } from "../providers/doctors";
     Filter,
     Cart,
     Login,
-    Register
+    Register,
+    Checkout
   ],
   imports: [
     BrowserModule,
@@ -73,16 +77,24 @@ import { DoctorService } from "../providers/doctors";
     Filter,
     Cart,
     Login,
-    Register
+    Register,
+    Checkout
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
+    {
+      provide: Http,
+      useFactory: httpInterceptorService,
+      deps: [XHRBackend, RequestOptions]
+    },
+    HttpInterceptorService,
     Subscriptions,
     Utility,
     LoginService,
-    DoctorService
+    DoctorService,
+    CheckoutService
   ]
 })
 export class AppModule {
@@ -99,4 +111,9 @@ export class AppModule {
 
 export function createTranslateLoader(http: Http) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
+
+
+export function httpInterceptorService(backend: XHRBackend, options: RequestOptions) {
+  return new HttpInterceptorService(backend, options);
 }

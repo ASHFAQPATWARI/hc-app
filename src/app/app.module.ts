@@ -31,6 +31,7 @@ import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
 import { DoctorService } from "../providers/doctors";
 import { CheckoutService } from "../providers/checkout-service";
+import { CartService } from "../providers/cart-service";
 
 
 @NgModule({
@@ -97,7 +98,8 @@ import { CheckoutService } from "../providers/checkout-service";
     Utility,
     LoginService,
     DoctorService,
-    CheckoutService
+    CheckoutService,
+    CartService
   ]
 })
 export class AppModule {

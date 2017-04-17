@@ -1,3 +1,25 @@
 page-checkout {
-
+  ion-content {
+    background: $light-grey !important;
+  }
+  .pull-right {
+    float: right;
+  }
+  ion-card-header {
+    border-bottom: 1px solid #dcdcdc;
+  }
+  ion-card-content {
+    margin-top: 10px;
+  }
+  .top-border {
+    border-top: 1px solid #dcdcdc;
+  }
+  .light-gray {
+    color: rgba(0, 0, 0, 0.5)
+  }
+  .amount {
+    color: #fff;
+    line-height: 47px;
+    margin-left: 5px;
+  }
 }

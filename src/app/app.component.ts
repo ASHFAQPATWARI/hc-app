@@ -10,6 +10,7 @@ import { DoctorsPage } from '../pages/doctors/doctors';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Login } from "../pages/login/login";
 import { Cart } from "../pages/cart/cart";
+import { Checkout } from "../pages/checkout/checkout";
 
 @Component({
   templateUrl: 'app.html'
@@ -66,7 +67,7 @@ export class MyApp {
   }
 
   openCart() {
-    this.nav.push(Cart);
+    this.nav.push(Checkout);
   }
 
 }

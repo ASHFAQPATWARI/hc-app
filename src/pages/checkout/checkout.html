@@ -7,12 +7,66 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>checkout</ion-title>
+    <ion-title>Checkout</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
-<ion-content padding>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      30 Days Meal
+      <ion-icon name="trash" class="pull-right light-gray"></ion-icon>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-row>
+        <ion-col col-12>
+          <ion-item>
+            <ion-label>Start Date</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="startdate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label>End Date</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="enddate"></ion-datetime>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label>Quantity</ion-label>
+            <ion-select [(ngModel)]="quantity">
+              <ion-option value="1">1</ion-option>
+              <ion-option value="2">2</ion-option>
+              <ion-option value="3">3</ion-option>
+              <ion-option value="4">4</ion-option>
 
+            </ion-select>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-card-content>
+    <ion-card-header class="top-border">
+      Price
+      <span class="pull-right"> KD 120.000</span>
+    </ion-card-header>
+    <button ion-button clear icon-left block color='lightGreen'>
+        <ion-icon name="ios-create-outline"></ion-icon>
+        <div>Edit Subscription </div>
+      </button>
+  </ion-card>
+  <ion-card>
+
+    <ion-footer>
+      <ion-toolbar>
+        <span class="amount"><b>Total : KD 2000.000</b></span>
+        <button ion-button color="yellow" (click)='placeOrder()' class="pull-right">
+              Place Order
+            </button>
+      </ion-toolbar>
+    </ion-footer>
+  </ion-card>
 </ion-content>

@@ -30,7 +30,7 @@
     <ion-list>
       <ion-item *ngFor="let duration of filterObject.durations">
         <ion-label>{{duration.days}} Days</ion-label>
-        <ion-checkbox [(ngModel)]="binding" item-right></ion-checkbox>
+        <ion-checkbox [(ngModel)]="duration.selected" item-right></ion-checkbox>
       </ion-item>
     </ion-list>
   </ion-card>

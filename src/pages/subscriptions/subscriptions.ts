@@ -19,13 +19,31 @@ import * as _ from "lodash";
   templateUrl: 'subscriptions.html'
 })
 export class SubscriptionsPage {
-  public subscriptions;
+  public subscriptions; filteredSubs;
+  filterObject = {
+    categories: [],
+    durations: []
+  };
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
     public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions) {
 
     this.subscriptionsService.getSubscriptions().subscribe(
       data => {
         this.subscriptions = data;
+        this.filteredSubs = data;
+        _.forEach(this.subscriptions, (item, index) => {
+          this.filterObject.categories = this.filterObject.categories.concat(item.cats);
+          this.filterObject.durations.push(
+            {
+              id: index,
+              days: item.days,
+              selected: false
+            }
+          );
+        });
+        this.filterObject.categories = _.uniqBy(this.filterObject.categories, 'id');
+        this.filterObject.durations = _.uniqBy(this.filterObject.durations, 'days');
+
       }
     );
   }
@@ -38,25 +56,43 @@ export class SubscriptionsPage {
     this.navCtrl.push(Cart);
   }
 
-  openFilter() {
-    let filterObject = {
-      categories: [],
-      durations: []
-    };
-    _.forEach(this.subscriptions, function (item, index) {
-      filterObject.categories = filterObject.categories.concat(item.cats);
-      filterObject.durations.push(
-        {
-          id: index,
-          days: item.days,
-          selected: false
-        }
-      );
-    })
+  updateFilterObject(filterObj) {
+    this.filterObject = filterObj;
+    this.applyFilters();
+  }
 
-    filterObject.categories = _.uniqBy(filterObject.categories, 'id');
-    filterObject.durations = _.uniqBy(filterObject.durations, 'days');
-    let modal = this.modalCtrl.create(Filter, { filterObject: filterObject});
+  applyFilters() {
+    this.filteredSubs = [];
+    const selectedCats = _.filter(this.filterObject.categories, { 'selected': true });
+    if (selectedCats.length) {
+      _.forEach(selectedCats, (category) => {
+        _.forEach(this.subscriptions, (sub) => {
+          const iscatPresent = _.filter(sub.cats, (cat) => {
+            return cat.id == category.id
+          })
+          if (iscatPresent && iscatPresent.length) {
+            this.filteredSubs.push(sub);
+          }
+        });
+      });
+      this.filteredSubs = _.uniqBy(this.filteredSubs, 'id');
+    } else {
+      this.filteredSubs = this.subscriptions;
+    }
+
+    const selectedDurations = _.filter(this.filterObject.durations, { 'selected': true });
+    if (selectedDurations.length) {
+      const selecteddays = _.map(selectedDurations, (sub) => {
+        return sub.days;
+      });
+      this.filteredSubs = _.filter(this.filteredSubs, function (sub) {
+        return _.includes(selecteddays, sub.days);
+      });
+    }
+  }
+
+  openFilter() {
+    let modal = this.modalCtrl.create(Filter, { filterObject: this.filterObject, filterCallback: this.updateFilterObject.bind(this) });
     modal.present();
   }
 
@@ -69,7 +105,7 @@ export class SubscriptionsPage {
           icon: 'information-circle',
           handler: () => {
             actionSheet.onDidDismiss(() => {
-              this.navCtrl.push(SubscriptionDetailsPage, {sub:sub});
+              this.navCtrl.push(SubscriptionDetailsPage, { sub: sub });
             });
           }
         }, {

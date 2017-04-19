@@ -12,9 +12,10 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
   templateUrl: 'filter.html',
 })
 export class Filter {
-  filterObject;
+  filterObject; callback;
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
     this.filterObject = this.navParams.get('filterObject');
+    this.callback = this.navParams.get('filterCallback');
   }
 
   ionViewDidLoad() {
@@ -22,6 +23,7 @@ export class Filter {
   }
 
   dismiss() {
+    this.callback(this.filterObject);
     this.viewCtrl.dismiss();
   }
 

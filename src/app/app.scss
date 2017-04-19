@@ -37,6 +37,7 @@
   color: white;
   bottom: 23px;
   font-size: 15px;
+  right: 0;
 }
 
 .no-line-height {
@@ -51,13 +52,37 @@
   border-bottom: 1px solid #dcdcdc;
   padding: 10px 5px;
 }
+
 .swiper-pagination-bullet {
-  background: #fff;;
+  background: #fff;
+  ;
   opacity: .6;
 }
+
 .swiper-pagination-bullet-active {
   background: $yellow-color;
   opacity: 1;
 }
 
+.loggedin .button {
+  color: #ffe81c;
+  background-color: transparent;
+}
 
+.loggedin {
+  position: absolute;
+  left: 15px;
+  color: white;
+  bottom: 0px;
+  font-size: 15px;
+  right: 0;
+}
+
+.log-out .toolbar-background {
+  border: 0;
+  background: transparent;
+}
+
+.log-out .item-inner {
+  border: 0 !important;
+}

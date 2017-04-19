@@ -49,7 +49,7 @@ export class Utility {
   }
 
   doLogout() {
-    localStorage.removeItem('authorizationData');
+    localStorage.removeItem('token');
     this.customerObj = null;
   }
 

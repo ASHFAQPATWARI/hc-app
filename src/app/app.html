@@ -2,9 +2,22 @@
   <ion-header>
     <div class="no-line-height">
       <img src="assets/images/login-img.jpg">
-      <a class="login-link" menuClose (click)='openLogin()'>Log in / Sign up</a>
+      <a class="login-link" menuClose (click)='openLogin()' *ngIf="!isLoggedIn">
+        Log in / Sign up
+        </a>
+      <ion-row class="loggedin" *ngIf="isLoggedIn" align-items-center>
+        <ion-col> {{userInfo.userName}}</ion-col>
+        <ion-col align-self-end>
+          <ion-buttons end>
+            <button ion-button icon-only color="yellow" menuClose (click)='openSettings()'>
+          <ion-icon ios="md-settings" md="md-settings"></ion-icon>
+        </button>
+          </ion-buttons>
+        </ion-col>
+      </ion-row>
+
     </div>
-    <ion-toolbar class="sidebar-toolbar">
+    <!--<ion-toolbar class="sidebar-toolbar">
       <ion-buttons start class="person-icon">
         <button ion-button icon-only>
           <ion-icon ios="ios-contact" md="md-contact"></ion-icon>
@@ -18,7 +31,7 @@
           <ion-icon ios="md-settings" md="md-settings"></ion-icon>
         </button>
       </ion-buttons>
-    </ion-toolbar>
+    </ion-toolbar>-->
   </ion-header>
 
   <ion-content>
@@ -32,6 +45,14 @@
         {{p.title}}
       </button>
     </ion-list>
+    <ion-footer class="log-out" *ngIf="isLoggedIn">
+      <ion-toolbar>
+        <button menuClose ion-item (click)="doLogout()">
+        <ion-icon name="log-out" item-left></ion-icon>
+        Log out
+      </button>
+      </ion-toolbar>
+    </ion-footer>
   </ion-content>
 
 </ion-menu>

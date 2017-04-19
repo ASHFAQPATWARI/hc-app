@@ -9,7 +9,6 @@ import { SubscriptionsPage } from '../pages/subscriptions/subscriptions';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Login } from "../pages/login/login";
-import { EditSubscription } from "../pages/edit-subscription/edit-subscription";
 
 import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
@@ -27,7 +26,7 @@ export class MyApp {
   pages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
-   public modalCtrl: ModalController, public utilityService: Utility, public loginService: LoginService) {
+    public modalCtrl: ModalController, public utilityService: Utility, public loginService: LoginService) {
     this.initializeApp();
     this.setUserInfo();
     this.loginService.subscribeLoginChanges().subscribe(
@@ -55,7 +54,7 @@ export class MyApp {
 
   setUserInfo() {
     const userdata = this.utilityService.getCustomerObj();
-    if(userdata) {
+    if (userdata) {
       this.isLoggedIn = true;
       this.userInfo = userdata;
     } else {
@@ -85,6 +84,11 @@ export class MyApp {
 
   openLogin() {
     this.nav.push(Login);
+  }
+
+  doLogout() {
+    this.utilityService.doLogout();
+    this.loginService.sendLoginChanges();
   }
 
 }

@@ -35,6 +35,7 @@ export class LoginService {
         this.utility.setToken(r);
         this.utility.dismissLoading();
       }).catch((r: Response) => {
+        this.utility.dismissLoading();
         return Observable.throw(r.json());
       });
   };

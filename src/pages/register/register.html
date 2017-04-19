@@ -80,7 +80,7 @@
           </ion-row>
         </ion-grid>
         <div padding-horizontal>
-          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn">Register</button>
+          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn" [disabled]="!registerForm.form.valid">Register</button>
         </div>
       </form>
 

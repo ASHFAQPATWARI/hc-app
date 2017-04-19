@@ -18,7 +18,6 @@ export class DoctorService {
   }
 
   getDoctors(): Observable<any> {
-    console.log('getDoctors');
     this.utility.createLoading();
     return this.http.get(`${this.apiHost}page/doctors`)
       .map((r: Response) => r.json().result.doctors)

@@ -31,7 +31,6 @@ export class MyApp {
     this.setUserInfo();
     this.loginService.subscribeLoginChanges().subscribe(
       data => {
-        console.log('login happened', data);
         this.setUserInfo();
       }
     );

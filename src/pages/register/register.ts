@@ -25,7 +25,14 @@ export class Register {
   }
 
   register() {
-    // this.loginService.
+    this.loginService.doRegister(this.registerObj).subscribe(
+      data => {
+        console.log('register data', data);
+      },
+      error => {
+        console.log('error on register', error);
+      }
+    )
     this.navCtrl.popToRoot();
   }
 

@@ -10,20 +10,31 @@ import { DoctorsPage } from '../pages/doctors/doctors';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Login } from "../pages/login/login";
 
+import { Utility } from "../providers/utility";
+import { LoginService } from "../providers/login";
+
 @Component({
   templateUrl: 'app.html'
 })
 export class MyApp {
   @ViewChild(Nav) nav: Nav;
 
+  isLoggedIn = false;
+  userInfo;
   rootPage: any = HelpSlidesPage; //HomePage; //
 
   pages: Array<{ title: string, component: any, icon: string }>;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, public modalCtrl: ModalController) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
+   public modalCtrl: ModalController, public utilityService: Utility, public loginService: LoginService) {
     this.initializeApp();
-
-    // used for an example of ngFor and navigation
+    this.setUserInfo();
+    this.loginService.subscribeLoginChanges().subscribe(
+      data => {
+        console.log('login happened', data);
+        this.setUserInfo();
+      }
+    );
     this.pages = [
       { title: 'Book A Meal', component: SubscriptionsPage, icon: 'restaurant' },
       { title: 'Book An Appointment', component: DoctorsPage, icon: 'calendar' }
@@ -39,6 +50,17 @@ export class MyApp {
       this.statusBar.backgroundColorByHexString('#000000');
       this.splashScreen.hide();
     });
+  }
+
+  setUserInfo() {
+    const userdata = this.utilityService.getCustomerObj();
+    if(userdata) {
+      this.isLoggedIn = true;
+      this.userInfo = userdata;
+    } else {
+      this.isLoggedIn = false;
+      this.userInfo = null;
+    }
   }
 
   pushPage(page) {

@@ -2,7 +2,11 @@ import { Injectable } from '@angular/core';
 import { Http, Response, RequestOptionsArgs, Headers } from '@angular/http';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/do';
+import 'rxjs/add/operator/catch';
+import 'rxjs/add/observable/throw';
+
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 
 import { Utility } from "./utility";
 
@@ -15,6 +19,7 @@ import { Utility } from "./utility";
 @Injectable()
 export class LoginService {
   apiHost;
+  loginChanges: Subject<any> = new Subject();
   constructor(public http: Http, public utility: Utility) {
     this.apiHost = this.utility.apiHost;
   }
@@ -29,8 +34,17 @@ export class LoginService {
       .do((r) => {
         this.utility.setToken(r);
         this.utility.dismissLoading();
+      }).catch((r: Response) => {
+        return Observable.throw(r.json());
       });
-
   };
+
+  sendLoginChanges() {
+    this.loginChanges.next();
+  }
+
+  subscribeLoginChanges(): Observable<any> {
+    return this.loginChanges.asObservable();
+  }
 
 }

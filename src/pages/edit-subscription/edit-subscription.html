@@ -14,16 +14,16 @@
 
 
 <ion-content>
-  <ion-card *ngFor="let d of data" >
+  <ion-card *ngFor="let d of data">
 
     <ion-card-header (click)="toggleDetails(d)">
       <ion-icon color="primary" item-right [name]="d.icon"></ion-icon>
       Ionic 2 Accordion
     </ion-card-header>
 
-    <div *ngIf="d.showDetails">
+    <ion-card-content *ngIf="d.showDetails">
       <div>{{d.details}}</div>
-    </div>
+    </ion-card-content>
 
   </ion-card>
 

@@ -23,7 +23,8 @@ import { Checkout } from "../pages/checkout/checkout";
 import { Thankyou } from "../pages/thankyou/thankyou";
 import { EnableEditSubscription } from "../pages/enable-edit-subscription/enable-edit-subscription";
 import { EditSubscription } from "../pages/edit-subscription/edit-subscription";
-
+import { MyAccount } from "../pages/my-account/my-account";
+import { MySubscriptions } from "../pages/my-subscriptions/my-subscriptions";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -34,7 +35,7 @@ import { LoginService } from "../providers/login";
 import { DoctorService } from "../providers/doctors";
 import { CheckoutService } from "../providers/checkout-service";
 import { CartService } from "../providers/cart-service";
-
+import { MyaccountService } from "../providers/myaccount-service";
 
 @NgModule({
   declarations: [
@@ -53,7 +54,9 @@ import { CartService } from "../providers/cart-service";
     Checkout,
     Thankyou,
     EnableEditSubscription,
-    EditSubscription
+    EditSubscription,
+    MyAccount,
+    MySubscriptions
   ],
   imports: [
     BrowserModule,
@@ -88,7 +91,9 @@ import { CartService } from "../providers/cart-service";
     Checkout,
     Thankyou,
     EnableEditSubscription,
-    EditSubscription
+    EditSubscription,
+    MyAccount,
+    MySubscriptions
   ],
   providers: [
     StatusBar,
@@ -105,7 +110,8 @@ import { CartService } from "../providers/cart-service";
     LoginService,
     DoctorService,
     CheckoutService,
-    CartService
+    CartService,
+    MyaccountService
   ]
 })
 export class AppModule {

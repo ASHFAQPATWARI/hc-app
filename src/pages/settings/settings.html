@@ -21,16 +21,16 @@
     <ion-card-header class="b-b-m">
       <span class="semi-bold">Language</span>
     </ion-card-header>
-    <ion-list radio-group>
+    <ion-list radio-group (ionChange)="changeLanguage()" [(ngModel)]="currentLanguage">
 
       <ion-item>
         <ion-label>English</ion-label>
-        <ion-radio value="rust"></ion-radio>
+        <ion-radio value="en"></ion-radio>
       </ion-item>
 
       <ion-item>
         <ion-label>العربية</ion-label>
-        <ion-radio value="python"></ion-radio>
+        <ion-radio value="ar"></ion-radio>
       </ion-item>
     </ion-list>
   </ion-card>

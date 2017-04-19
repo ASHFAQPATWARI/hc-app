@@ -1,11 +1,12 @@
 import { NgModule, ErrorHandler } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { IonicApp, IonicModule, IonicErrorHandler } from 'ionic-angular';
+import { IonicApp, IonicModule, IonicErrorHandler, Platform } from 'ionic-angular';
 import { FormsModule } from '@angular/forms';
 
 import { HttpModule, Http, XHRBackend, RequestOptions } from '@angular/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { TranslateService } from '@ngx-translate/core';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -116,10 +117,21 @@ import { MyaccountService } from "../providers/myaccount-service";
 })
 export class AppModule {
 
-  constructor(public utility: Utility) {
+  constructor(public utility: Utility, public traslate: TranslateService, public platform: Platform) {
     const token = this.utility.getToken();
     if (token) {
       this.utility.setCustomerObj(token);
+    }
+
+    const lang = this.utility.getLanguage();
+    if (lang) {
+      this.traslate.use(lang);
+      if (lang === 'ar')
+        this.platform.setDir('rtl', true);
+      else
+        this.platform.setDir('ltr', true);
+    } else {
+      this.traslate.setDefaultLang('en');
     }
   }
 

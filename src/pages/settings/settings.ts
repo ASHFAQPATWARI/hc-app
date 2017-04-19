@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, Platform } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
+
+import { Utility } from "../../providers/utility";
 
 /**
  * Generated class for the Settings page.
@@ -12,12 +15,23 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'settings.html',
 })
 export class Settings {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  currentLanguage;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility, public platform: Platform, public translate: TranslateService) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Settings');
   }
 
-}
+  changeLanguage() {
+    this.utilityService.setLanguage(this.currentLanguage);
+    if (this.currentLanguage === 'ar') {
+      this.platform.setDir('rtl', true);
+    } else {
+      this.platform.setDir('ltr', true);
+    }
+
+    this.translate.use(this.currentLanguage);
+  }
+
+} 

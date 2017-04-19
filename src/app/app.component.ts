@@ -9,6 +9,8 @@ import { SubscriptionsPage } from '../pages/subscriptions/subscriptions';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Login } from "../pages/login/login";
+import { MyAccount } from "../pages/my-account/my-account";
+import { MySubscriptions } from "../pages/my-subscriptions/my-subscriptions";
 
 import { Utility } from "../providers/utility";
 import { LoginService } from "../providers/login";
@@ -24,6 +26,7 @@ export class MyApp {
   rootPage: any = HelpSlidesPage; //HomePage; //
 
   pages: Array<{ title: string, component: any, icon: string }>;
+  loggedInPages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
     public modalCtrl: ModalController, public utilityService: Utility, public loginService: LoginService) {
@@ -38,6 +41,11 @@ export class MyApp {
       { title: 'Book A Meal', component: SubscriptionsPage, icon: 'restaurant' },
       { title: 'Book An Appointment', component: DoctorsPage, icon: 'calendar' }
     ];
+
+    this.loggedInPages = [
+      { title: 'My Subscriptions', component: MySubscriptions, icon: 'list' },
+      { title: 'My Account', component: MyAccount, icon: 'person' }
+    ]
 
   }
 
@@ -89,5 +97,6 @@ export class MyApp {
     this.utilityService.doLogout();
     this.loginService.sendLoginChanges();
   }
+
 
 }

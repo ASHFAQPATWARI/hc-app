@@ -61,4 +61,12 @@ export class Utility {
     return this.customerObj;
   }
 
+  setLanguage(lang) {
+    localStorage.setItem('lang', lang);
+  }
+
+  getLanguage(): any {
+    return localStorage.getItem('lang');
+  }
+
 }

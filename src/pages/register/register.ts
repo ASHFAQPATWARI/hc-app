@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams, ViewController } from 'ionic-angular';
+import { LoginService } from "../../providers/login";
 
 /**
  * Generated class for the Register page.
@@ -12,8 +13,11 @@ import { NavController, NavParams, ViewController } from 'ionic-angular';
   templateUrl: 'register.html',
 })
 export class Register {
+  registerObj: any = {
+    gender: 1,
+  };
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loginService: LoginService) {
   }
 
   ionViewDidLoad() {
@@ -21,7 +25,14 @@ export class Register {
   }
 
   register() {
-    console.log(' Register clicked');
+    this.loginService.doRegister(this.registerObj).subscribe(
+      data => {
+        console.log('register data', data);
+      },
+      error => {
+        console.log('error on register', error);
+      }
+    )
     this.navCtrl.popToRoot();
   }
 

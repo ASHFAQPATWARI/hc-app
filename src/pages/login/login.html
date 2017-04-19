@@ -14,14 +14,14 @@
   <form (ngSubmit)="login()" #loginForm="ngForm">
     <ion-list>
       <ion-item>
-        <ion-input placeholder="Username" clearInput name="username" [(ngModel)]="credentials.username"></ion-input>
+        <ion-input placeholder="Username" clearInput name="username" [(ngModel)]="credentials.username" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Password" clearInput name="password" [(ngModel)]="credentials.password"></ion-input>
+        <ion-input type="password" placeholder="Password" clearInput name="password" [(ngModel)]="credentials.password" required></ion-input>
       </ion-item>
     </ion-list>
     <div padding-horizontal>
-      <button ion-button block color='lightGreen' round=false class="login-btn">Login</button>
+      <button type="submit" ion-button block color='lightGreen' round=false class="login-btn" [disabled]="!loginForm.form.valid">Login</button>
     </div>
     <p ion-text margin-top text-center color='lightGreen' class="forgot-password"><b> FORGOT PASSWORD?</b></p>
   </form>

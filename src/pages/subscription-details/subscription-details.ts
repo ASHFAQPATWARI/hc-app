@@ -15,7 +15,6 @@ export class SubscriptionDetailsPage {
   public subsciption;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.subsciption = this.navParams.get('sub');
-    console.log('sub ->,', this.subsciption);
   }
 
   ionViewDidLoad() {

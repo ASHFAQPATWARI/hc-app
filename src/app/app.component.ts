@@ -9,6 +9,7 @@ import { SubscriptionsPage } from '../pages/subscriptions/subscriptions';
 import { DoctorsPage } from '../pages/doctors/doctors';
 import { HelpSlidesPage } from "../pages/help-slides/help-slides";
 import { Login } from "../pages/login/login";
+import { EditSubscription } from "../pages/edit-subscription/edit-subscription";
 
 @Component({
   templateUrl: 'app.html'

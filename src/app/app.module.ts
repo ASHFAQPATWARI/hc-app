@@ -21,6 +21,8 @@ import { Login } from "../pages/login/login";
 import { Register } from "../pages/register/register";
 import { Checkout } from "../pages/checkout/checkout";
 import { Thankyou } from "../pages/thankyou/thankyou";
+import { EnableEditSubscription } from "../pages/enable-edit-subscription/enable-edit-subscription";
+import { EditSubscription } from "../pages/edit-subscription/edit-subscription";
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -49,7 +51,9 @@ import { CartService } from "../providers/cart-service";
     Login,
     Register,
     Checkout,
-    Thankyou
+    Thankyou,
+    EnableEditSubscription,
+    EditSubscription
   ],
   imports: [
     BrowserModule,
@@ -82,7 +86,9 @@ import { CartService } from "../providers/cart-service";
     Login,
     Register,
     Checkout,
-    Thankyou
+    Thankyou,
+    EnableEditSubscription,
+    EditSubscription
   ],
   providers: [
     StatusBar,

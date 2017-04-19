@@ -94,12 +94,12 @@ import { CartService } from "../providers/cart-service";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    {
-      provide: Http,
-      useFactory: httpInterceptorService,
-      deps: [XHRBackend, RequestOptions]
-    },
-    HttpInterceptorService,
+    // {
+    //   provide: Http,
+    //   useFactory: httpInterceptorService,
+    //   deps: [XHRBackend, RequestOptions]
+    // },
+    //HttpInterceptorService,
     Subscriptions,
     Utility,
     LoginService,

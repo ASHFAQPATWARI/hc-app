@@ -32,13 +32,14 @@ export class Utility {
   }
 
   getToken(): any {
-    const token = localStorage.getItem('token');
+    let token = localStorage.getItem('token');
     if (token) {
+      token = JSON.parse(token);
       const d1 = new Date();
       const d2 = new Date(token['.expires']);
       const notexpired = d1.getTime() < d2.getTime();
       if (notexpired) {
-        return JSON.parse(token);
+        return token;
       } else {
         return null;
       }

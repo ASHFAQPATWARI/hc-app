@@ -39,6 +39,18 @@ export class LoginService {
       });
   };
 
+  doRegister(params): Observable<any> {
+    this.utility.createLoading();
+    return this.http.post(`${this.apiHost}account/register`, params)
+      .map((r: Response) => r.json())
+      .do((r) => {
+        this.utility.dismissLoading();
+      }).catch((r: Response) => {
+        this.utility.dismissLoading();
+        return Observable.throw(r.json());
+      });
+  }
+
   sendLoginChanges() {
     this.loginChanges.next();
   }

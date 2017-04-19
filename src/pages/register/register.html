@@ -27,13 +27,13 @@
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>First Name</ion-label>
-                <ion-input required></ion-input>
+                <ion-input name='firstname' required [(ngModel)]="registerObj.FirstName"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Last Name</ion-label>
-                <ion-input></ion-input>
+                <ion-input name='lastname' required [(ngModel)]="registerObj.LastName"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -41,7 +41,7 @@
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Email</ion-label>
-                <ion-input type="email"></ion-input>
+                <ion-input name='email' type="email" required [(ngModel)]="registerObj.email"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -49,7 +49,18 @@
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Mobile</ion-label>
-                <ion-input type="tel"></ion-input>
+                <ion-input type="tel" name='mobile' required [(ngModel)]="registerObj.Mobile"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Gender</ion-label>
+                <ion-select name="gender" [(ngModel)]="registerObj.gender">
+                  <ion-option value="1">Male</ion-option>
+                  <ion-option value="2">Female</ion-option>
+                </ion-select>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -57,13 +68,13 @@
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Password</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" name='password' required [(ngModel)]="registerObj.password"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Confirm Password</ion-label>
-                <ion-input type="password"></ion-input>
+                <ion-input type="password" name='confirmpass' required [(ngModel)]="registerObj.ConfirmPassword"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>

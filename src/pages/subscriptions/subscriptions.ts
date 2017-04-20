@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, ActionSheetController, ToastController, AlertController } from 'ionic-angular';
 import { Filter } from "../filter/filter";
 import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
-import { Cart } from "../cart/cart";
+import { Checkout } from "../checkout/checkout";
 
 import { Subscriptions } from "../../providers/subscriptions";
 import { CartService } from "../../providers/cart-service";
@@ -55,8 +55,8 @@ export class SubscriptionsPage {
     console.log('ionViewDidLoad SubscriptionsPage');
   }
 
-  openCart() {
-    this.navCtrl.push(Cart);
+  openCheckout() {
+    this.navCtrl.push(Checkout);
   }
 
   updateFilterObject(filterObj) {
@@ -100,32 +100,37 @@ export class SubscriptionsPage {
   }
 
   openActionSheet(sub) {
-    let actionSheet = this.actionSheetCtrl.create({
-      title: sub.name,
-      buttons: [
-        {
-          text: 'Show Details',
-          icon: 'information-circle',
-          handler: () => {
-            actionSheet.onDidDismiss(() => {
-              this.navCtrl.push(SubscriptionDetailsPage, { sub: sub });
-            });
+    if (_.find(this.cartObject.cartitems, ['subid', sub.id])){
+      this.showToastWithCloseButton('Subscription already added to Cart.');
+    } else {
+      let actionSheet = this.actionSheetCtrl.create({
+        title: sub.name,
+        buttons: [
+          {
+            text: 'Show Details',
+            icon: 'information-circle',
+            handler: () => {
+              actionSheet.onDidDismiss(() => {
+                this.navCtrl.push(SubscriptionDetailsPage, { sub: sub, callback: this.updatecartObj.bind(this) });
+              });
+            }
+          }, {
+            text: 'Add to Cart',
+            icon: 'cart',
+            handler: () => {
+              actionSheet.onDidDismiss(() => {
+                this.showPlanOptions(sub);
+              });
+            }
+          }, {
+            text: 'Cancel',
+            icon: 'close',
           }
-        }, {
-          text: 'Add to Cart',
-          icon: 'cart',
-          handler: () => {
-            actionSheet.onDidDismiss(() => {
-              this.showPlanOptions(sub);
-            });
-          }
-        }, {
-          text: 'Cancel',
-          icon: 'close',
-        }
-      ]
-    });
-    actionSheet.present();
+        ]
+      });
+      actionSheet.present();
+    }
+    
   }
 
   showPlanOptions(sub) {
@@ -136,7 +141,7 @@ export class SubscriptionsPage {
       alert.addInput({
         type: 'radio',
         label: `${sub.prices[i].person} person (${sub.prices[i].price})`,
-        value: sub.prices[i].person,
+        value: sub.prices[i],
         checked: (!i) ? true : false
       });
     }
@@ -145,10 +150,15 @@ export class SubscriptionsPage {
     alert.addButton({
       text: 'OK',
       handler: data => {
+        this.cartObject = this.cartService.addCartItem(sub, data);
         this.showToastWithCloseButton('Added to cart successfully.');
       }
     });
     alert.present();
+  }
+
+  updatecartObj() {
+    this.cartObject = this.cartService.getCartObject();
   }
 
   showToastWithCloseButton(msg) {

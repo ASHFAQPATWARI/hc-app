@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 
+import * as _ from "lodash";
+
 @Injectable()
 export class CartService {
   cartObject: any = {
@@ -26,6 +28,15 @@ export class CartService {
       selectedQtyPlan: selectedPlan
     });
     this.cartObject.total += selectedPlan.price;
+    return this.cartObject;
+  }
+
+  removeCartItem(subid) {
+    const removedSub = _.remove(this.cartObject.cartitems, (sub: any) => {
+      return sub.subid == subid;
+    })[0];
+    this.cartObject.total -=removedSub.price;
+    return this.cartObject;
   }
 
 }

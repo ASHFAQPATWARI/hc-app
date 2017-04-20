@@ -3,6 +3,8 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Checkout } from "../checkout/checkout";
 
+import { CartService } from "../../providers/cart-service";
+
 /**
  * Generated class for the Cart page.
  *
@@ -14,8 +16,9 @@ import { Checkout } from "../checkout/checkout";
   templateUrl: 'cart.html',
 })
 export class Cart {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  cartObj;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService) {
+    this.cartObj = this.cartService.getCartObject();
   }
 
   ionViewDidLoad() {

@@ -36,6 +36,8 @@
       </ion-grid>
     </ion-card-content>
   </ion-card>
-  <button ion-fab class="cart-fab" (click)="openCart()"><ion-icon name="cart" right color='yellow'></ion-icon></button>
-  <div style="height:80px;">&nbsp;</div>
+  <ng-container *ngIf="cartObject.cartitems.length">
+    <button ion-fab class="cart-fab" (click)="openCheckout()"><ion-icon name="cart" right color='yellow'></ion-icon></button>
+    <div style="height:80px;">&nbsp;</div>
+  </ng-container>
 </ion-content>

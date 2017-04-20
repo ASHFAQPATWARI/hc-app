@@ -7,12 +7,34 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>my-account</ion-title>
+    <ion-title>My Details</ion-title>
   </ion-navbar>
-
+  <ion-toolbar color="lightGreen">
+    <ion-segment [(ngModel)]="accountTab">
+      <ion-segment-button value="info">
+        Info
+      </ion-segment-button>
+      <ion-segment-button value="address">
+        Addresses
+      </ion-segment-button>
+      <ion-segment-button value="chngPass">
+        Change Password
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
 </ion-header>
 
-
 <ion-content padding>
+  <div [ngSwitch]="accountTab">
+    <div *ngSwitchCase="'info'">
+      info
+    </div>
 
+    <div *ngSwitchCase="'address'">
+      adress
+    </div>
+    <div *ngSwitchCase="'chngPass'">
+      change password
+    </div>
+  </div>
 </ion-content>

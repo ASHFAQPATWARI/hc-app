@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ModalController, ActionSheetController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ModalController, ActionSheetController, ToastController, AlertController } from 'ionic-angular';
 import { Filter } from "../filter/filter";
 import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
 import { Cart } from "../cart/cart";
 
 import { Subscriptions } from "../../providers/subscriptions";
+import { CartService } from "../../providers/cart-service";
 
 import * as _ from "lodash";
 
@@ -24,9 +25,11 @@ export class SubscriptionsPage {
     categories: [],
     durations: []
   };
-  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController,
-    public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions) {
+  cartObject: any;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController,
+    public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions, public cartService: CartService) {
 
+    this.cartObject = this.cartService.getCartObject();
     this.subscriptionsService.getSubscriptions().subscribe(
       data => {
         this.subscriptions = data;
@@ -67,7 +70,7 @@ export class SubscriptionsPage {
     if (selectedCats.length) {
       _.forEach(selectedCats, (category) => {
         _.forEach(this.subscriptions, (sub) => {
-          const iscatPresent = _.filter(sub.cats, (cat) => {
+          const iscatPresent = _.filter(sub.cats, (cat: any) => {
             return cat.id == category.id
           })
           if (iscatPresent && iscatPresent.length) {
@@ -85,7 +88,7 @@ export class SubscriptionsPage {
       const selecteddays = _.map(selectedDurations, (sub) => {
         return sub.days;
       });
-      this.filteredSubs = _.filter(this.filteredSubs, function (sub) {
+      this.filteredSubs = _.filter(this.filteredSubs, (sub: any) => {
         return _.includes(selecteddays, sub.days);
       });
     }
@@ -113,7 +116,7 @@ export class SubscriptionsPage {
           icon: 'cart',
           handler: () => {
             actionSheet.onDidDismiss(() => {
-              this.showToastWithCloseButton();
+              this.showPlanOptions(sub);
             });
           }
         }, {
@@ -125,9 +128,32 @@ export class SubscriptionsPage {
     actionSheet.present();
   }
 
-  showToastWithCloseButton() {
+  showPlanOptions(sub) {
+    let alert = this.alertCtrl.create();
+    alert.setTitle('Select Plan');
+    alert.setSubTitle(sub.name);
+    for (let i = 0; i < sub.prices.length; i++) {
+      alert.addInput({
+        type: 'radio',
+        label: `${sub.prices[i].person} person (${sub.prices[i].price})`,
+        value: sub.prices[i].person,
+        checked: (!i) ? true : false
+      });
+    }
+
+    alert.addButton('Cancel');
+    alert.addButton({
+      text: 'OK',
+      handler: data => {
+        this.showToastWithCloseButton('Added to cart successfully.');
+      }
+    });
+    alert.present();
+  }
+
+  showToastWithCloseButton(msg) {
     const toast = this.toastCntrl.create({
-      message: 'Added to Cart Successfully',
+      message: msg,
       showCloseButton: true,
       closeButtonText: 'Ok'
     });

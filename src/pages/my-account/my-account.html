@@ -9,7 +9,7 @@
   <ion-navbar>
     <ion-title>My Details</ion-title>
   </ion-navbar>
-  <ion-toolbar color="lightGreen">
+  <ion-toolbar color="white">
     <ion-segment [(ngModel)]="accountTab">
       <ion-segment-button value="info">
         Info
@@ -26,15 +26,104 @@
 
 <ion-content padding>
   <div [ngSwitch]="accountTab">
-    <div *ngSwitchCase="'info'">
-      info
+    <div *ngSwitchCase="'info'" class="info">
+      <ion-row>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary" floating>First Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+        <ion-col>
+          <ion-item>
+            <ion-label color="primary" floating>Last Name</ion-label>
+            <ion-input type="text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+      <ion-item>
+        <ion-label color="primary" floating>Email</ion-label>
+        <ion-input type="email"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Mobile Number</ion-label>
+        <ion-input type="tel"></ion-input>
+      </ion-item>
+      <ion-footer>
+        <div padding-horizontal class="btn">
+          <button type="submit" ion-button block color='lightGreen' round=false>Update</button>
+        </div>
+      </ion-footer>
     </div>
 
-    <div *ngSwitchCase="'address'">
-      adress
+    <div *ngSwitchCase="'address'" class="address">
+      <ion-list>
+        <ion-list-header>
+          Saved Address
+        </ion-list-header>
+
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="../../assets/images/Kuwait-map.jpg">
+            </ion-avatar>
+            <h2>Home Address</h2>
+            <p>Saleh Al Mubarak Streetr, Kuwait City</p>
+          </ion-item>
+          <ion-item-options>
+            <button ion-button color="light" icon-left>
+              <ion-icon name="create"></ion-icon>
+            Edit
+          </button>
+            <button ion-button color="light" icon-left>
+              <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+
+
+          </ion-item-options>
+        </ion-item-sliding>
+        <ion-item-sliding>
+          <ion-item>
+            <ion-avatar item-left>
+              <img src="../../assets/images/Kuwait-map.jpg">
+            </ion-avatar>
+            <h2>Home Address</h2>
+            <p>Saleh Al Mubarak Streetr, Kuwait City</p>
+          </ion-item>
+          <ion-item-options>
+            <button ion-button color="light" icon-left>
+              <ion-icon name="create"></ion-icon>
+            Edit
+          </button>
+            <button ion-button color="light" icon-left>
+              <ion-icon name="trash"></ion-icon>
+          Delete
+        </button>
+
+
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-list>
     </div>
     <div *ngSwitchCase="'chngPass'">
-      change password
+      <ion-item>
+        <ion-label color="primary" floating>Current Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>New Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label color="primary" floating>Conform Password</ion-label>
+        <ion-input type="password"></ion-input>
+      </ion-item>
+      <ion-footer>
+        <div padding-horizontal class="btn">
+          <button type="submit" ion-button block color='lightGreen' round=false>Update Password</button>
+        </div>
+      </ion-footer>
     </div>
   </div>
 </ion-content>

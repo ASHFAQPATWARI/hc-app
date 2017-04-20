@@ -5,8 +5,8 @@
       <a class="login-link" menuClose (click)='openLogin()' *ngIf="!isLoggedIn">
         Log in / Sign up
         </a>
-      <ion-row class="loggedin" *ngIf="isLoggedIn" align-items-center>
-        <ion-col> {{userInfo.userName}}</ion-col>
+      <ion-row class="loggedin" align-items-center>
+        <ion-col *ngIf="isLoggedIn"> {{userInfo.userName}}</ion-col>
         <ion-col align-self-end>
           <ion-buttons end>
             <button ion-button icon-only color="yellow" menuClose (click)='openSettings()'>

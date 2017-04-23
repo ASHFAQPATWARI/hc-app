@@ -124,7 +124,7 @@ export class AppModule {
     }
 
     const lang = this.utility.getLanguage();
-    if (lang) {
+    if (lang === 'en' || lang === 'ar') {
       this.traslate.use(lang);
       if (lang === 'ar')
         this.platform.setDir('rtl', true);

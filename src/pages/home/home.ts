@@ -16,7 +16,6 @@ import { Register } from "../register/register";
 export class HomePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public translate: TranslateService) {
-    translate.setDefaultLang('en');
     if (this.navParams.get('openLogin')) {
       navCtrl.push(Login);
     } else if (this.navParams.get('openRegister')) {
@@ -26,10 +25,6 @@ export class HomePage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad HomePage');
-  }
-
-  changeLang() {
-    this.translate.use('ar');
   }
 
 }

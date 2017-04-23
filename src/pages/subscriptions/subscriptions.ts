@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams, ModalController, ActionSheetController, ToastController, AlertController } from 'ionic-angular';
 import { Filter } from "../filter/filter";
 import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
@@ -19,17 +19,25 @@ import * as _ from "lodash";
   selector: 'page-subscriptions',
   templateUrl: 'subscriptions.html'
 })
-export class SubscriptionsPage {
+export class SubscriptionsPage implements OnDestroy {
   public subscriptions; filteredSubs;
   filterObject = {
     categories: [],
     durations: []
   };
   cartObject: any;
+  cartChangeListener: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController,
     public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions, public cartService: CartService) {
 
     this.cartObject = this.cartService.getCartObject();
+    this.cartChangeListener = this.cartService.subscribeCartChanges().subscribe(
+      data => {
+        this.cartObject = data;
+      }
+    );
+
     this.subscriptionsService.getSubscriptions().subscribe(
       data => {
         this.subscriptions = data;
@@ -100,7 +108,7 @@ export class SubscriptionsPage {
   }
 
   openActionSheet(sub) {
-    if (_.find(this.cartObject.cartitems, ['subid', sub.id])){
+    if (_.find(this.cartObject.cartitems, ['subid', sub.id])) {
       this.showToastWithCloseButton('Subscription already added to Cart.');
     } else {
       let actionSheet = this.actionSheetCtrl.create({
@@ -130,7 +138,7 @@ export class SubscriptionsPage {
       });
       actionSheet.present();
     }
-    
+
   }
 
   showPlanOptions(sub) {
@@ -168,5 +176,10 @@ export class SubscriptionsPage {
       closeButtonText: 'Ok'
     });
     toast.present();
+  }
+
+  ngOnDestroy() {
+    this.cartChangeListener.unsubscribe();
+
   }
 }

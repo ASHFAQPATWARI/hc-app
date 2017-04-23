@@ -10,9 +10,12 @@ page-subscription-details {
     color: #222;
     margin: 5px 4px;
   }
-  
   .card p {
     margin: 10px 8px 3px;
   }
-
+  .cart-fab {
+    position: fixed;
+    bottom: 25px;
+    right: 32px;
+  }
 }

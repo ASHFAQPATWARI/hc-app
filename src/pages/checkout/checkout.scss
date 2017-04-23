@@ -22,4 +22,13 @@ page-checkout {
     line-height: 47px;
     margin-left: 5px;
   }
+  .empty-cart p:first-child {
+    font-size: 23px;
+    margin-top: 126px;
+    color: #40403e;
+    font-family: Avenir_Bold;
+  }
+  .empty-cart img {
+    width: 150px;
+  }
 }

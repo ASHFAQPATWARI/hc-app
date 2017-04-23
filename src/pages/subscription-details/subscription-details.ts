@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { NavController, NavParams, AlertController, ToastController } from 'ionic-angular';
+import { Checkout } from "../checkout/checkout";
 
 import { CartService } from "../../providers/cart-service";
 
@@ -15,10 +16,19 @@ import { CartService } from "../../providers/cart-service";
 })
 export class SubscriptionDetailsPage {
   public subsciption; callback;
+  public cartObject;
+  cartChangeListener: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController,
-   public toastCntrl: ToastController, public cartService: CartService) {
+    public toastCntrl: ToastController, public cartService: CartService) {
     this.subsciption = this.navParams.get('sub');
     this.callback = this.navParams.get('callback');
+
+    this.cartObject = this.cartService.getCartObject();
+    this.cartChangeListener = this.cartService.subscribeCartChanges().subscribe(
+      data => {
+        this.cartObject = data;
+      }
+    );
   }
 
   ionViewDidLoad() {
@@ -60,6 +70,14 @@ export class SubscriptionDetailsPage {
       closeButtonText: 'Ok'
     });
     toast.present();
+  }
+
+  openCheckout() {
+    this.navCtrl.push(Checkout);
+  }
+
+  ngOnDestroy() {
+    this.cartChangeListener.unsubscribe();
   }
 
 }

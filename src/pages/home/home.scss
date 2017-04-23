@@ -2,4 +2,17 @@ page-home {
   .swiper-slide img {
     height: 140px;
   }
+  .notification-button {
+    position: relative;
+    width: 42px;
+    top: 1px;
+    right: 1px;
+    overflow: visible!important;
+  }
+  .notifications-badge {
+    background-color: #FFE81C;
+    position: absolute;
+    top: -3px;
+    right: -3px; // border-radius: 100%;
+  }
 }

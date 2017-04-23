@@ -1,3 +1,6 @@
 {
-  "FUEL": "تمبنلامبلان"
+  "ok": "حسنا",
+  "FUEL": "تمبنلامبلان",
+  "empty_cart": "Cart is Empty",
+  "empty_cart_msg": "You have not selected any subscription"
 }

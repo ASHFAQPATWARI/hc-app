@@ -6,6 +6,13 @@
     <ion-title>
       <img alt="logo" height="40" src="assets/images/logo.png">
     </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openCheckout()" class="notification-button">
+        <ion-icon name="cart">
+          <ion-badge class="notifications-badge" color="yellow">{{cartObject.cartitems.length}}</ion-badge>
+        </ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 

@@ -69,4 +69,12 @@ export class Utility {
     return localStorage.getItem('lang');
   }
 
+  getFormattedDate(d: Date): string {
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+    ];
+
+    return d.getDay()+1 + ' ' + monthNames[d.getMonth()] + ' ' + d.getFullYear();
+  }
+
 }

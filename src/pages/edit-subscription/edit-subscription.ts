@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
+import { Utility } from "../../providers/utility";
 
 /**
  * Generated class for the EditSubscription page.
@@ -12,8 +13,8 @@ import { NavController, NavParams } from 'ionic-angular';
   templateUrl: 'edit-subscription.html'
 })
 export class EditSubscription {
-  data: Array<{ title: string, details: string, icon: string, showDetails: boolean }> = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  data: Array<any> = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility) {
     for (let i = 0; i < 10; i++) {
       this.data.push({
         title: 'Title ' + i,
@@ -22,6 +23,8 @@ export class EditSubscription {
         showDetails: false
       });
     }
+
+    console.log('formatted date', this.utilityService.getFormattedDate(new Date()));
   }
 
   ionViewDidLoad() {

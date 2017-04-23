@@ -17,10 +17,8 @@ export class Checkout {
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService, public utilityService: Utility) {
     this.cartObject = this.cartService.getCartObject();
-    console.log('cartObject, ', this.cartObject);
     this.startDate = this.utilityService.addDays(new Date(), 2);
     this.startDate = this.utilityService.formatDateyyyymmdd(this.startDate);
-    console.log('startDate, ', this.startDate);
   }
 
   ionViewDidLoad() {
@@ -40,14 +38,12 @@ export class Checkout {
   }
 
   getSubscriptionMenu(sub) {
-    console.log('getEndDate..', sub);
     this.cartService.getMealMenu({
       "startdate": sub.startdate,
       "subid": sub.subid
     }).subscribe(
       data => {
-        console.log('data menu', data);
-        let lastObj = _.last(data.mealdates);
+        let lastObj: any = _.last(data.mealdates);
         sub.enddate = this.utilityService.formatDateyyyymmdd(lastObj.mdate);
       }
       );

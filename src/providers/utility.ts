@@ -70,11 +70,11 @@ export class Utility {
   }
 
   getFormattedDate(d: Date): string {
+
     const monthNames = ["January", "February", "March", "April", "May", "June",
       "July", "August", "September", "October", "November", "December"
     ];
-
-    return d.getDay() + 1 + ' ' + monthNames[d.getMonth()] + ' ' + d.getFullYear();
+    return d.getDate() + ' ' + monthNames[d.getMonth()] + ' ' + d.getFullYear();
   }
 
   addDays(date, days) {

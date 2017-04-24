@@ -14,15 +14,16 @@
 
 
 <ion-content>
-  <ion-card *ngFor="let dates of person.menuSelection">
+  <ion-card *ngFor="let date of person.menuSelection; trackBy: trackDates">
 
-    <ion-card-header (click)="toggleDetails(dates)">
+    <ion-card-header (click)="toggleDetails(date)">
       <ion-icon color="primary" item-right name="ios-add-circle-outline"></ion-icon>
-      {{dates.mdate}}
+      {{date.formattedDate}}
     </ion-card-header>
 
-    <ion-card-content *ngIf="false">
-      <div>ok</div>
+<ion-card-content *ngIf="date.showDetails">
+
+      <div>India</div>
     </ion-card-content>
 
   </ion-card>

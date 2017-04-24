@@ -14,15 +14,15 @@
 
 
 <ion-content>
-  <ion-card *ngFor="let d of data">
+  <ion-card *ngFor="let dates of person.menuSelection">
 
-    <ion-card-header (click)="toggleDetails(d)">
-      <ion-icon color="primary" item-right [name]="d.icon"></ion-icon>
-      Ionic 2 Accordion
+    <ion-card-header (click)="toggleDetails(dates)">
+      <ion-icon color="primary" item-right name="ios-add-circle-outline"></ion-icon>
+      {{dates.mdate}}
     </ion-card-header>
 
-    <ion-card-content *ngIf="d.showDetails">
-      <div>{{d.details}}</div>
+    <ion-card-content *ngIf="false">
+      <div>ok</div>
     </ion-card-content>
 
   </ion-card>

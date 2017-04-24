@@ -14,7 +14,7 @@ import { CartService } from "../../providers/cart-service";
   selector: 'page-subscription-details',
   templateUrl: 'subscription-details.html'
 })
-export class SubscriptionDetailsPage {
+export class SubscriptionDetailsPage implements OnDestroy {
   public subsciption; callback;
   public cartObject;
   cartChangeListener: any;

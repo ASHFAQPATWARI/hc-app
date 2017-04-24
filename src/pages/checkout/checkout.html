@@ -39,7 +39,7 @@
           <ion-col>
             <ion-item>
               <ion-label>Quantity</ion-label>
-              <ion-select [(ngModel)]="sub.selectedQtyPlan">
+              <ion-select [(ngModel)]="sub.selectedQtyPlan" disabled='true'>
                 <ion-option *ngFor="let plan of sub.prices" [value]="plan">{{plan.person}}</ion-option>
               </ion-select>
             </ion-item>
@@ -50,22 +50,22 @@
         Price
         <span class="pull-right"> KD 120.000</span>
       </ion-card-header>
-      <button ion-button clear icon-left block color='lightGreen' (click)='editSubscription()'>
+      <button ion-button clear icon-left block color='lightGreen' (click)='editSubscription(sub)'>
         <ion-icon name="ios-create-outline"></ion-icon>
         <div>Edit Subscription </div>
       </button>
     </ion-card>
-    <ion-card>
-      <ion-footer>
-        <ion-toolbar>
-          <span class="amount"><b>Total : KD 2000.000</b></span>
-          <button ion-button color="yellow" (click)='placeOrder()' class="pull-right">
+  </div>
+  <ion-footer>
+    <ion-toolbar>
+      <span class="amount"><b>Total : KD 2000.000</b></span>
+      <button ion-button color="yellow" (click)='placeOrder()' class="pull-right">
               Place Order
             </button>
-        </ion-toolbar>
-      </ion-footer>
-    </ion-card>
-  </div>
+    </ion-toolbar>
+  </ion-footer>
+
+
 
   <ng-template #emptyCart>
     <div text-center class="empty-cart">

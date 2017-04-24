@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
+import { TranslateService } from '@ngx-translate/core';
 import { EnableEditSubscription } from "../enable-edit-subscription/enable-edit-subscription";
+
 
 import { CartService } from "../../providers/cart-service";
 import { Utility } from "../../providers/utility";
@@ -15,7 +17,7 @@ export class Checkout {
   cartObject;
   startDate;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService, public utilityService: Utility) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService, public utilityService: Utility, public alertCtrl: AlertController, public translate: TranslateService) {
     this.cartObject = this.cartService.getCartObject();
     this.startDate = this.utilityService.addDays(new Date(), 2);
     this.startDate = this.utilityService.formatDateyyyymmdd(this.startDate);
@@ -25,8 +27,22 @@ export class Checkout {
     console.log('ionViewDidLoad Checkout');
   }
 
-  editSubscription() {
-    this.navCtrl.push(EnableEditSubscription);
+  editSubscription(sub) {
+    if (sub.startdate) {
+      this.navCtrl.push(EnableEditSubscription, { sub: sub });
+    } else {
+      let msgs;
+      this.translate.get(['alert', 'start_date_required', 'ok']).subscribe((res: any) => {
+        msgs = res;
+      });
+      let alert = this.alertCtrl.create({
+        title: msgs.alert,
+        message: msgs.start_date_required,
+        buttons: [msgs.ok]
+      });
+      alert.present();
+    }
+
   }
 
   removeCartItem(subid) {
@@ -45,6 +61,11 @@ export class Checkout {
       data => {
         let lastObj: any = _.last(data.mealdates);
         sub.enddate = this.utilityService.formatDateyyyymmdd(lastObj.mdate);
+
+        _.forEach(sub.persons, function (person) {
+          person.menuSelection = data.mealdates;
+        });
+
       }
       );
   }

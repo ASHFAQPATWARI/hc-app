@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams, AlertController } from 'ionic-angular';
 import { EditSubscription } from "../edit-subscription/edit-subscription";
+
+import { TranslateService } from '@ngx-translate/core';
 
 /**
  * Generated class for the EnableEditSubscription page.
@@ -13,16 +15,34 @@ import { EditSubscription } from "../edit-subscription/edit-subscription";
   templateUrl: 'enable-edit-subscription.html',
 })
 export class EnableEditSubscription {
-
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  subscrption;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public alertCtrl: AlertController, public translate: TranslateService) {
+    this.subscrption = this.navParams.get('sub');
+    console.log('this.subscrption', this.subscrption);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad EnableEditSubscription');
   }
 
-  editSubscription() {
-    this.navCtrl.push(EditSubscription)
+  editSubscription(person) {
+    if (person.name) {
+      this.navCtrl.push(EditSubscription, {
+        "person" : person
+      })
+    } else {
+      let msgs;
+      this.translate.get(['alert', 'name_required', 'ok']).subscribe((res: any) => {
+        msgs = res;
+      });
+      let alert = this.alertCtrl.create({
+        title: msgs.alert,
+        message: msgs.name_required,
+        buttons: [msgs.ok]
+      });
+      alert.present();
+    }
+
   }
 
 }

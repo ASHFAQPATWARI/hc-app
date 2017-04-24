@@ -27,7 +27,7 @@ export class CartService {
   }
 
   addCartItem(subscription, selectedPlan) {
-    this.cartObject.cartitems.push({
+    const tempCartItem = {
       subid: subscription.id,
       subName: subscription.name,
       person: selectedPlan.person,
@@ -35,8 +35,18 @@ export class CartService {
       prices: subscription.prices,
       startdate: undefined,
       enddate: undefined,
-      selectedQtyPlan: selectedPlan
-    });
+      selectedQtyPlan: selectedPlan,
+      persons: []
+    };
+
+    for (let i = 0; i < tempCartItem.person; i++) {
+      tempCartItem.persons.push({
+        name: '',
+        menuSelection: undefined
+      });
+    }
+
+    this.cartObject.cartitems.push(tempCartItem);
     this.cartObject.total += selectedPlan.price;
     return this.cartObject;
   }

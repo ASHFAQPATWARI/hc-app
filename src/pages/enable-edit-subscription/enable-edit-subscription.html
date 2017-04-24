@@ -15,27 +15,14 @@
 
 <ion-content>
   <ion-card>
-    <ion-row>
+    <ion-row *ngFor="let person of subscrption.persons">
       <ion-col>
         <ion-item>
-          <ion-input type="text" placeholder="Name"></ion-input>
+          <ion-input type="text" [(ngModel)]="person.name" placeholder="Name"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col text-right>
-        <button ion-button icon-left color='lightGreen' (click)='editSubscription()'>
-        <ion-icon name="ios-create-outline"></ion-icon>
-        <div>Edit </div>
-      </button>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col>
-        <ion-item>
-          <ion-input type="text" placeholder="Name"></ion-input>
-        </ion-item>
-      </ion-col>
-      <ion-col text-right>
-        <button ion-button icon-left color='lightGreen' (click)='editSubscription()'>
+        <button ion-button icon-left color='lightGreen' (click)='editSubscription(person)'>
         <ion-icon name="ios-create-outline"></ion-icon>
         <div>Edit </div>
       </button>

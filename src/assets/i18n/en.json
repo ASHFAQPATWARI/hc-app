@@ -1,7 +1,9 @@
 {
   "ok": "OK",
+  "alert": "Alert!",
   "FUEL" : "fuel",
   "empty_cart": "Cart is Empty",
-  "empty_cart_msg": "You have not selected any subscription"
-  
+  "empty_cart_msg": "You have not selected any subscription",
+  "start_date_required": "Please select Start Date to continue",
+  "name_required": "Please enter name to continue"
 }

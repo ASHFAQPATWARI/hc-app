@@ -13,8 +13,14 @@ import { Utility } from "../../providers/utility";
   templateUrl: 'edit-subscription.html'
 })
 export class EditSubscription {
+  person;
+
+ 
   data: Array<any> = [];
   constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility) {
+    this.person = this.navParams.get('person');
+    console.log('this.perso: ',this.person);
+    
     for (let i = 0; i < 10; i++) {
       this.data.push({
         title: 'Title ' + i,

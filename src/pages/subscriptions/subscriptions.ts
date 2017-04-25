@@ -108,36 +108,40 @@ export class SubscriptionsPage implements OnDestroy {
   }
 
   openActionSheet(sub) {
-    if (_.find(this.cartObject.cartitems, ['subid', sub.id])) {
-      this.showToastWithCloseButton('Subscription already added to Cart.');
-    } else {
-      let actionSheet = this.actionSheetCtrl.create({
-        title: sub.name,
-        buttons: [
-          {
-            text: 'Show Details',
-            icon: 'information-circle',
-            handler: () => {
-              actionSheet.onDidDismiss(() => {
-                this.navCtrl.push(SubscriptionDetailsPage, { sub: sub, callback: this.updatecartObj.bind(this) });
-              });
-            }
-          }, {
-            text: 'Add to Cart',
-            icon: 'cart',
-            handler: () => {
-              actionSheet.onDidDismiss(() => {
-                this.showPlanOptions(sub);
-              });
-            }
-          }, {
-            text: 'Cancel',
-            icon: 'close',
+
+    let actionSheet = this.actionSheetCtrl.create({
+      title: sub.name,
+      buttons: [
+        {
+          text: 'Show Details',
+          icon: 'information-circle',
+          handler: () => {
+            actionSheet.onDidDismiss(() => {
+              this.navCtrl.push(SubscriptionDetailsPage, { sub: sub, callback: this.updatecartObj.bind(this) });
+            });
           }
-        ]
-      });
-      actionSheet.present();
-    }
+        }, {
+          text: 'Add to Cart',
+          icon: 'cart',
+          handler: () => {
+
+            actionSheet.onDidDismiss(() => {
+              if (_.find(this.cartObject.cartitems, ['subid', sub.id])) {
+                this.showToastWithCloseButton('Subscription already added to Cart.');
+              } else {
+                this.showPlanOptions(sub);
+              }
+
+            });
+          }
+        }, {
+          text: 'Cancel',
+          icon: 'close',
+        }
+      ]
+    });
+    actionSheet.present();
+
 
   }
 
@@ -148,7 +152,7 @@ export class SubscriptionsPage implements OnDestroy {
     for (let i = 0; i < sub.prices.length; i++) {
       alert.addInput({
         type: 'radio',
-        label: `${sub.prices[i].person} person (${sub.prices[i].price})`,
+        label: `${sub.prices[i].person} person (KD ${sub.prices[i].price})`,
         value: sub.prices[i],
         checked: (!i) ? true : false
       });

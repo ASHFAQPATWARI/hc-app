@@ -48,7 +48,7 @@
       </ion-card-content>
       <ion-card-header class="top-border">
         Price
-        <span class="pull-right"> KD 120.000</span>
+edit s        <span class="pull-right"> KD {{sub.price}}</span>
       </ion-card-header>
       <button ion-button clear icon-left block color='lightGreen' (click)='editSubscription(sub)'>
         <ion-icon name="ios-create-outline"></ion-icon>
@@ -58,14 +58,12 @@
   </div>
   <ion-footer>
     <ion-toolbar>
-      <span class="amount"><b>Total : KD 2000.000</b></span>
+      <span class="amount"><b>Total : KD {{cartObject.total}}</b></span>
       <button ion-button color="yellow" (click)='placeOrder()' class="pull-right">
               Place Order
             </button>
     </ion-toolbar>
   </ion-footer>
-
-
 
   <ng-template #emptyCart>
     <div text-center class="empty-cart">
@@ -78,5 +76,5 @@
       </div>
     </ion-footer>
   </ng-template>
-
+  <div style="height:80px;">&nbsp;</div>
 </ion-content>

@@ -61,13 +61,23 @@ export class Checkout {
       data => {
         let lastObj: any = _.last(data.mealdates);
         sub.enddate = this.utilityService.formatDateyyyymmdd(lastObj.mdate);
-        _.forEach(data.mealdates, (date)=>{
-            date.formattedDate = this.utilityService.getFormattedDate(new Date(date.mdate));
-            date.showDetails = false;
-          })
-        _.forEach(sub.persons, function (person) {
-          person.menuSelection = data.mealdates;
+        _.forEach(data.mealdates, (date) => {
+          date.formattedDate = this.utilityService.getFormattedDate(new Date(date.mdate));
+          date.showDetails = false;
+          _.forEach(date.mealtypes, function (category) {
+            _.forEach(category, function (menuSection) {
+              _.forEach(menuSection, function (menuSection) {
+
+              });
+            });
+          });
+        })
+        _.forEach(sub.persons, (person) => {
+          const mealDates = _.cloneDeep(data.mealdates) ;
+          person.menuSelection = mealDates;
         });
+
+        
 
       }
       );

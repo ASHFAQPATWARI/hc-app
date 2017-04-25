@@ -26,4 +26,13 @@ page-edit-subscription {
       }
     }
   }
+  .list-ios:not([inset])+.list-ios:not([inset]) ion-list-header {
+    margin-top: 0;
+  }
+  .card-md ion-list {
+    margin-bottom: 15px;
+  }
+  ion-card-header {
+    background-color: #f5f59d;
+  }
 }

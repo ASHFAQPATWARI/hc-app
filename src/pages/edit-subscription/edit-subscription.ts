@@ -14,7 +14,7 @@ import { Utility } from "../../providers/utility";
 })
 export class EditSubscription {
   person;
-  
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility) {
     this.person = this.navParams.get('person');
   }
@@ -29,5 +29,11 @@ export class EditSubscription {
 
   trackDates(index, item) {
     return index;
+  }
+
+  itemSelected(selectedItem) {
+    console.log('selectedItem', selectedItem);
+    selectedItem.selected = true;
+    console.log('person', this.person);
   }
 }

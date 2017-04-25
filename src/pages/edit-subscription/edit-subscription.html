@@ -7,23 +7,32 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>edit-subscription</ion-title>
+    <ion-title>Selection for {{person.name}}</ion-title>
   </ion-navbar>
-
 </ion-header>
-
 
 <ion-content>
   <ion-card *ngFor="let date of person.menuSelection; trackBy: trackDates">
-
     <ion-card-header (click)="toggleDetails(date)">
       <ion-icon color="primary" item-right name="ios-add-circle-outline"></ion-icon>
       {{date.formattedDate}}
     </ion-card-header>
 
-<ion-card-content *ngIf="date.showDetails">
+    <ion-card-content *ngIf="date.showDetails" no-padding>
+      <ion-item-group *ngFor="let category of date.mealtypes">
+        <ion-item-divider color="light">{{category.name}}</ion-item-divider>
+        <ion-list radio-group *ngFor="let section of category.menusections" [(ngModel)]="section.selectedItem">
+          <ion-list-header>
+            {{section.menusectionname}}
+          </ion-list-header>
 
-      <div>India</div>
+          <ion-item *ngFor="let item of section.menuitems">
+            <ion-label>{{item.name}}</ion-label>
+            <ion-radio [value]="item"></ion-radio>
+          </ion-item>
+
+        </ion-list>
+      </ion-item-group>
     </ion-card-content>
 
   </ion-card>

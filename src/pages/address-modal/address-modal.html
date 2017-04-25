@@ -1,0 +1,87 @@
+<!--
+  Generated template for the AddressModal page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>address-modal</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <ion-card>
+
+    <ion-card-header>
+      Please provide the following details:
+    </ion-card-header>
+
+    <ion-card-content>
+      <form (ngSubmit)="addAddress()" #registerForm="ngForm">
+        <ion-grid>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Address title</ion-label>
+                <ion-input name='profileName' required [(ngModel)]="address.profileName"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label>Area</ion-label>
+                <ion-select name="area" [(ngModel)]="address.areaId">
+                  <ion-option value="1">Sharq</ion-option>
+                  <ion-option value="2">Kuwait</ion-option>
+                </ion-select>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Block</ion-label>
+                <ion-input name='block' type="text" required [(ngModel)]="address.block"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Street</ion-label>
+                <ion-input type="text" name='street' required [(ngModel)]="address.street"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Additional Direction</ion-label>
+                <ion-input type="text" name='adirectiions' required [(ngModel)]="address.additionalDirection"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Mobile Number</ion-label>
+                <ion-input type="tel" name='mobile' required [(ngModel)]="address.mobileNumber"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+
+        </ion-grid>
+        <div padding-horizontal>
+          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn">Add Address</button>
+        </div>
+      </form>
+
+    </ion-card-content>
+
+  </ion-card>
+</ion-content>

@@ -26,6 +26,7 @@ import { EnableEditSubscription } from "../pages/enable-edit-subscription/enable
 import { EditSubscription } from "../pages/edit-subscription/edit-subscription";
 import { MyAccount } from "../pages/my-account/my-account";
 import { MySubscriptions } from "../pages/my-subscriptions/my-subscriptions";
+import { AddressModal } from "../pages/address-modal/address-modal";
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -56,7 +57,8 @@ import { MyaccountService } from "../providers/myaccount-service";
     EnableEditSubscription,
     EditSubscription,
     MyAccount,
-    MySubscriptions
+    MySubscriptions,
+    AddressModal
   ],
   imports: [
     BrowserModule,
@@ -93,7 +95,8 @@ import { MyaccountService } from "../providers/myaccount-service";
     EnableEditSubscription,
     EditSubscription,
     MyAccount,
-    MySubscriptions
+    MySubscriptions,
+    AddressModal
   ],
   providers: [
     StatusBar,

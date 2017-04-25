@@ -105,6 +105,11 @@
           </ion-item-options>
         </ion-item-sliding>
       </ion-list>
+      <ion-footer>
+        <div padding-horizontal class="btn">
+          <button type="button" ion-button block color='lightGreen' (click)='openAddress()' round=false>Add Address</button>
+        </div>
+      </ion-footer>
     </div>
     <div *ngSwitchCase="'chngPass'">
       <ion-item>

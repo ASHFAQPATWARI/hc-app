@@ -10,7 +10,7 @@
     <ion-title>My Details</ion-title>
   </ion-navbar>
   <ion-toolbar color="white">
-    <ion-segment [(ngModel)]="accountTab">
+    <ion-segment [(ngModel)]="accountTab" (ngModelChange)="tabChanged()">
       <ion-segment-button value="info">
         Info
       </ion-segment-button>
@@ -31,23 +31,23 @@
         <ion-col>
           <ion-item>
             <ion-label color="primary" floating>First Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" name="custfirstname" [(ngModel)]="accountInfo.firstname"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
             <ion-label color="primary" floating>Last Name</ion-label>
-            <ion-input type="text"></ion-input>
+            <ion-input type="text" name="custlastname" [(ngModel)]="accountInfo.lastname"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-item>
         <ion-label color="primary" floating>Email</ion-label>
-        <ion-input type="email"></ion-input>
+        <ion-input type="email" name="custemail" [(ngModel)]="accountInfo.email"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label color="primary" floating>Mobile Number</ion-label>
-        <ion-input type="tel"></ion-input>
+        <ion-input type="tel" name="custmobile" [(ngModel)]="accountInfo.mobile"></ion-input>
       </ion-item>
       <ion-footer>
         <div padding-horizontal class="btn">
@@ -111,24 +111,27 @@
         </div>
       </ion-footer>
     </div>
+
     <div *ngSwitchCase="'chngPass'">
-      <ion-item>
-        <ion-label color="primary" floating>Current Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label color="primary" floating>New Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-item>
-        <ion-label color="primary" floating>Conform Password</ion-label>
-        <ion-input type="password"></ion-input>
-      </ion-item>
-      <ion-footer>
-        <div padding-horizontal class="btn">
-          <button type="submit" ion-button block color='lightGreen' round=false>Update Password</button>
-        </div>
-      </ion-footer>
+      <form (ngSubmit)="changePassword()" #changePass="ngForm">
+        <ion-item>
+          <ion-label color="primary" floating>Current Password</ion-label>
+          <ion-input type="password" required name='currentpass' [(ngModel)]="changePassObj.oldpassword"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>New Password</ion-label>
+          <ion-input type="password" required name='newpass' [(ngModel)]="changePassObj.NewPassword"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label color="primary" floating>Conform Password</ion-label>
+          <ion-input type="password" required name='confirmpass' [(ngModel)]="changePassObj.ConfirmPassword"></ion-input>
+        </ion-item>
+        <ion-footer>
+          <div padding-horizontal class="btn">
+            <button type="submit" ion-button block color='lightGreen' round=false [disabled]="!changePass.form.valid">Update Password</button>
+          </div>
+        </ion-footer>
+      </form>
     </div>
   </div>
 </ion-content>

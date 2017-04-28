@@ -177,7 +177,8 @@ export class SubscriptionsPage implements OnDestroy {
     const toast = this.toastCntrl.create({
       message: msg,
       showCloseButton: true,
-      closeButtonText: 'Ok'
+      closeButtonText: 'Ok',
+      duration: 3000
     });
     toast.present();
   }

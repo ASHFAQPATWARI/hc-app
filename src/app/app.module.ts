@@ -102,12 +102,12 @@ import { MyaccountService } from "../providers/myaccount-service";
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    // {
-    //   provide: Http,
-    //   useFactory: httpInterceptorService,
-    //   deps: [XHRBackend, RequestOptions]
-    // },
-    //HttpInterceptorService,
+    {
+      provide: Http,
+      useFactory: httpInterceptorService,
+      deps: [XHRBackend, RequestOptions]
+    },
+    HttpInterceptorService,
     Subscriptions,
     Utility,
     LoginService,
@@ -125,14 +125,12 @@ export class AppModule {
     }
 
     const lang = this.utility.getLanguage();
-    if (lang === 'en' || lang === 'ar') {
-      this.traslate.use(lang);
-      if (lang === 'ar')
-        this.platform.setDir('rtl', true);
-      else
-        this.platform.setDir('ltr', true);
-    } else {
-      this.traslate.setDefaultLang('en');
+    this.traslate.use(lang);
+    if (lang === 'ar') {
+      this.platform.setDir('rtl', true);
+    }
+    else {
+      this.platform.setDir('ltr', true);
     }
   }
 

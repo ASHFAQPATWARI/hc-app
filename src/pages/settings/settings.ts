@@ -17,6 +17,7 @@ import { Utility } from "../../providers/utility";
 export class Settings {
   currentLanguage;
   constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility, public platform: Platform, public translate: TranslateService) {
+    this.currentLanguage = this.utilityService.getLanguage();
   }
 
   ionViewDidLoad() {

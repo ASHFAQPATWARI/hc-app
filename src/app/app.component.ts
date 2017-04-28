@@ -23,13 +23,26 @@ export class MyApp {
 
   isLoggedIn = false;
   userInfo;
-  rootPage: any = HelpSlidesPage; //HomePage; //
+  isPlatformReady = false;
+  isHomeDataReady = false;
+  homeData;
+  rootPage: any = HelpSlidesPage; //HomePage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
   loggedInPages: Array<{ title: string, component: any, icon: string }>;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen,
     public modalCtrl: ModalController, public utilityService: Utility, public loginService: LoginService) {
+    this.utilityService.getHomeDataCall().subscribe(
+      data => {
+        this.homeData = data;
+        this.utilityService.setHomeData(data);
+        this.isHomeDataReady = true;
+        if (this.isPlatformReady) {
+          this.splashScreen.hide();
+        }
+      }
+    );
     this.initializeApp();
     this.setUserInfo();
     this.loginService.subscribeLoginChanges().subscribe(
@@ -54,8 +67,11 @@ export class MyApp {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
       //this.statusBar.styleDefault();
+      this.isPlatformReady = true;
       this.statusBar.backgroundColorByHexString('#000000');
-      this.splashScreen.hide();
+      if (this.isHomeDataReady) {
+        this.splashScreen.hide();
+      }
     });
   }
 
@@ -71,8 +87,6 @@ export class MyApp {
   }
 
   pushPage(page) {
-    // Reset the content nav to have just this page
-    // we wouldn't want the back button to show in this scenario
     this.nav.push(page.component);
   }
 

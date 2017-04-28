@@ -1,6 +1,9 @@
 import { Injectable } from '@angular/core';
-import { Http } from '@angular/http';
-import { LoadingController, Loading } from "ionic-angular";
+import { Http, Response } from '@angular/http';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+
+import { LoadingController, Loading, AlertController } from "ionic-angular";
 import 'rxjs/add/operator/map';
 
 /*
@@ -12,9 +15,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Utility {
   public apiHost = 'http://198.37.116.215:9000/api/';
-  private customerObj: any;
+  private customerObj;
+  homeData;
   loading: Loading;
-  constructor(public http: Http, public loadingCtrl: LoadingController) {
+  constructor(public http: Http, public loadingCtrl: LoadingController, public alertCtrl: AlertController) {
   }
 
   createLoading() {
@@ -24,6 +28,15 @@ export class Utility {
 
   dismissLoading() {
     this.loading.dismissAll();
+  }
+
+  showAlert(params) {
+    const alert = this.alertCtrl.create({
+      title: params.title,
+      subTitle: params.subTitle,
+      buttons: ['OK']
+    });
+    alert.present();
   }
 
   setToken(r) {
@@ -66,7 +79,13 @@ export class Utility {
   }
 
   getLanguage(): any {
-    return localStorage.getItem('lang');
+    const lang = localStorage.getItem('lang');
+    if(lang === 'en' || lang === 'ar') {
+      return lang;
+    } else {
+      this.setLanguage('en');
+      return 'en';
+    }
   }
 
   getFormattedDate(d: Date): string {
@@ -93,6 +112,19 @@ export class Utility {
     if (day.length < 2) day = '0' + day;
 
     return [year, month, day].join('-');
+  }
+
+  getHomeDataCall(): Observable<any> {
+    return this.http.get(`${this.apiHost}page/home`)
+      .map((r: Response) => r.json().result);
+  };
+
+  setHomeData(data) {
+    this.homeData = data;
+  }
+
+  getHomeData() {
+    return this.homeData;
   }
 
 }

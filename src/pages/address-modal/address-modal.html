@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>address-modal</ion-title>
+    <ion-title>Add Address</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -20,14 +20,14 @@
       Please provide the following details:
     </ion-card-header>
 
-    <ion-card-content>
-      <form (ngSubmit)="addAddress()" #registerForm="ngForm">
+    <ion-card-content no-padding padding-vertical>
+      <form (ngSubmit)="addAddress()" #addressForm="ngForm">
         <ion-grid>
           <ion-row>
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Address title</ion-label>
-                <ion-input name='profileName' required [(ngModel)]="address.profileName"></ion-input>
+                <ion-input name='profileName' required [(ngModel)]="address.profilename"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -35,9 +35,8 @@
             <ion-col>
               <ion-item>
                 <ion-label>Area</ion-label>
-                <ion-select name="area" [(ngModel)]="address.areaId">
-                  <ion-option value="1">Sharq</ion-option>
-                  <ion-option value="2">Kuwait</ion-option>
+                <ion-select name="area" [(ngModel)]="address.areaid">
+                  <ion-option [value]="area.id" *ngFor="let area of areas">{{area.name}}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-col>
@@ -62,7 +61,7 @@
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Additional Direction</ion-label>
-                <ion-input type="text" name='adirectiions' required [(ngModel)]="address.additionalDirection"></ion-input>
+                <ion-input type="text" name='adirectiions' [(ngModel)]="address.additional"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
@@ -70,14 +69,14 @@
             <ion-col>
               <ion-item>
                 <ion-label color="primary" floating>Mobile Number</ion-label>
-                <ion-input type="tel" name='mobile' required [(ngModel)]="address.mobileNumber"></ion-input>
+                <ion-input type="tel" name='mobile' required [(ngModel)]="address.mobile"></ion-input>
               </ion-item>
             </ion-col>
           </ion-row>
 
         </ion-grid>
         <div padding-horizontal>
-          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn">Add Address</button>
+          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn" [disabled]="!addressForm.form.valid">Add Address</button>
         </div>
       </form>
 

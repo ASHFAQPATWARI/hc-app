@@ -22,7 +22,7 @@ export class HttpInterceptorService extends Http {
       }
     }
     if (authdata) {
-      //options.headers.set('Authorization', 'Bearer ' + authdata.access_token);
+      options.headers.set('Authorization', 'Bearer ' + authdata.access_token);
     }
     super(backend, options);
   }

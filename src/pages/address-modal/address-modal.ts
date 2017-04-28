@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
+import { Utility } from "../../providers/utility";
+import { MyaccountService } from "../../providers/myaccount-service";
+
 /**
  * Generated class for the AddressModal page.
  *
@@ -13,7 +16,9 @@ import { NavController, NavParams } from 'ionic-angular';
 })
 export class AddressModal {
   address: any = {};
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  areas;
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility, public accountService: MyaccountService) {
+    this.areas = this.utilityService.getHomeData().areas;
   }
 
   ionViewDidLoad() {
@@ -21,7 +26,11 @@ export class AddressModal {
   }
 
   addAddress() {
-
+    this.accountService.saveAddress(this.address).subscribe(
+      data => {
+        console.log('add address response', data);
+      }
+    );
   }
 
 }

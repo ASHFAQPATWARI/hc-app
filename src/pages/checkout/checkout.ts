@@ -20,7 +20,6 @@ export class Checkout {
   constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService, public utilityService: Utility, public alertCtrl: AlertController, public translate: TranslateService) {
     this.cartObject = this.cartService.getCartObject();
     this.startDate = this.utilityService.addDays(new Date(), 3);
-    this.startDate = this.utilityService.formatDateyyyymmdd(this.startDate);
   }
 
   ionViewDidLoad() {

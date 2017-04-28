@@ -102,7 +102,7 @@ export class Utility {
     if(result.getDay() === 5) {
       result.setDate(result.getDate() + 1);
     }
-    return result;
+    return this.formatDateyyyymmdd(result);
   }
 
   formatDateyyyymmdd(date) {
@@ -110,6 +110,17 @@ export class Utility {
       month = '' + (d.getMonth() + 1),
       day = '' + d.getDate(),
       year = d.getFullYear();
+
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+
+  formatDateObj(date) {
+    var month = '' + (date.month + 1),
+      day = '' + date.day,
+      year = date.year;
 
     if (month.length < 2) month = '0' + month;
     if (day.length < 2) day = '0' + day;

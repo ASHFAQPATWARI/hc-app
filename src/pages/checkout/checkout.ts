@@ -16,14 +16,24 @@ import * as _ from "lodash";
 export class Checkout {
   cartObject;
   startDate;
-
+  allowMenuCall = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService, public utilityService: Utility, public alertCtrl: AlertController, public translate: TranslateService) {
     this.cartObject = this.cartService.getCartObject();
+    // this.cartObject = _.map(this.cartObject.cartitems, (sub: any) => {
+    //   if(sub.startdate) {
+    //     if(typeof sub.startdate !== 'string') {
+    //       sub.startdate = this.utilityService.formatDateObj()
+    //     }
+    //   }
+    // });
     this.startDate = this.utilityService.addDays(new Date(), 3);
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad Checkout');
+    setTimeout(() => {
+      this.allowMenuCall = true;
+    }, 300);
   }
 
   editSubscription(sub) {
@@ -53,33 +63,41 @@ export class Checkout {
   }
 
   getSubscriptionMenu(sub) {
-    this.cartService.getMealMenu({
-      "startdate": sub.startdate,
-      "subid": sub.subid
-    }).subscribe(
-      data => {
-        let lastObj: any = _.last(data.mealdates);
-        sub.enddate = this.utilityService.formatDateyyyymmdd(lastObj.mdate);
-        _.forEach(data.mealdates, (date) => {
-          date.formattedDate = this.utilityService.getFormattedDate(new Date(date.mdate));
-          date.showDetails = false;
-          _.forEach(date.mealtypes, function (category) {
-            _.forEach(category, function (menuSection) {
-              _.forEach(menuSection, function (menuSection) {
+    if (this.allowMenuCall) {
 
+      if (typeof sub.startdate !== 'string') {
+        this.allowMenuCall = false;
+        sub.startdate = this.utilityService.formatDateObj(sub.startdate);
+      }
+      this.cartService.getMealMenu({
+        "startdate": sub.startdate,
+        "subid": sub.subid
+      }).subscribe(
+        data => {
+          this.allowMenuCall = true;
+          let lastObj: any = _.last(data.mealdates);
+          sub.enddate = this.utilityService.formatDateyyyymmdd(lastObj.mdate);
+          _.forEach(data.mealdates, (date) => {
+            date.formattedDate = this.utilityService.getFormattedDate(new Date(date.mdate));
+            date.showDetails = false;
+            _.forEach(date.mealtypes, function (category) {
+              _.forEach(category, function (menuSection) {
+                _.forEach(menuSection, function (menuSection) {
+
+                });
               });
             });
+          })
+          _.forEach(sub.persons, (person) => {
+            const mealDates = _.cloneDeep(data.mealdates);
+            person.menuSelection = mealDates;
           });
-        })
-        _.forEach(sub.persons, (person) => {
-          const mealDates = _.cloneDeep(data.mealdates) ;
-          person.menuSelection = mealDates;
-        });
 
-        
 
-      }
-      );
+
+        }
+        );
+    }
   }
 
 }

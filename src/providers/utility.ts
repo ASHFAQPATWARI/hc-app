@@ -97,8 +97,11 @@ export class Utility {
   }
 
   addDays(date, days) {
-    var result = new Date(date);
+    let result = new Date(date);
     result.setDate(result.getDate() + days);
+    if(result.getDay() === 5) {
+      result.setDate(result.getDate() + 1);
+    }
     return result;
   }
 

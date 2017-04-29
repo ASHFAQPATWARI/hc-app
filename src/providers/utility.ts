@@ -118,7 +118,7 @@ export class Utility {
   }
 
   formatDateObj(date) {
-    var month = '' + (date.month + 1),
+    var month = '' + (date.month),
       day = '' + date.day,
       year = date.year;
 

@@ -18,7 +18,7 @@ export class Register {
   registerObj: any = {
     gender: 1,
   };
-
+  dobmax = this.utilityService.formatDateyyyymmdd(new Date());
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loginService: LoginService,
     public utilityService: Utility, public alertCtrl: AlertController, public toastCtrl: ToastController) {
   }

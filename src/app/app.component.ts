@@ -26,7 +26,7 @@ export class MyApp {
   isPlatformReady = false;
   isHomeDataReady = false;
   homeData;
-  rootPage: any = HelpSlidesPage; //HomePage;
+  rootPage;
 
   pages: Array<{ title: string, component: any, icon: string }>;
   loggedInPages: Array<{ title: string, component: any, icon: string }>;
@@ -43,6 +43,12 @@ export class MyApp {
         }
       }
     );
+    if (this.utilityService.getHelpSlidesShown()) {
+      this.rootPage = HomePage;
+    } else {
+      this.rootPage = HelpSlidesPage;
+      this.utilityService.setHelpSlidesShown();
+    }
     this.initializeApp();
     this.setUserInfo();
     this.loginService.subscribeLoginChanges().subscribe(

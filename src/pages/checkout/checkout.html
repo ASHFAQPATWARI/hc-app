@@ -25,7 +25,7 @@
           <ion-col col-12>
             <ion-item>
               <ion-label>Start Date</ion-label>
-              <ion-datetime displayFormat="MMM DD YYYY" [min]='startDate' [(ngModel)]="sub.startdate" (ionChange)='getSubscriptionMenu(sub)'></ion-datetime>
+              <ion-datetime displayFormat="MMM DD YYYY" placeholder="Select Start Date" [min]='startDate' [(ngModel)]="sub.startdate" (ionChange)='getSubscriptionMenu(sub)'></ion-datetime>
             </ion-item>
           </ion-col>
           <ion-col>

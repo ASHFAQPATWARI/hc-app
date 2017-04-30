@@ -80,12 +80,20 @@ export class Utility {
 
   getLanguage(): any {
     const lang = localStorage.getItem('lang');
-    if(lang === 'en' || lang === 'ar') {
+    if (lang === 'en' || lang === 'ar') {
       return lang;
     } else {
       this.setLanguage('en');
       return 'en';
     }
+  }
+
+  setHelpSlidesShown() {
+    localStorage.setItem('showHelpSlides', 'false');
+  }
+
+  getHelpSlidesShown() {
+    return localStorage.getItem('showHelpSlides');
   }
 
   getFormattedDate(d: Date): string {
@@ -99,7 +107,7 @@ export class Utility {
   addDays(date, days) {
     let result = new Date(date);
     result.setDate(result.getDate() + days);
-    if(result.getDay() === 5) {
+    if (result.getDay() === 5) {
       result.setDate(result.getDate() + 1);
     }
     return this.formatDateyyyymmdd(result);

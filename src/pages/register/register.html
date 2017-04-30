@@ -56,6 +56,20 @@
           <ion-row>
             <ion-col>
               <ion-item>
+                <ion-label color="primary" floating>Password</ion-label>
+                <ion-input type="password" name='password' required [(ngModel)]="registerObj.password"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>Confirm Password</ion-label>
+                <ion-input type="password" name='confirmpass' required [(ngModel)]="registerObj.ConfirmPassword"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
                 <ion-label>Gender</ion-label>
                 <ion-select name="gender" [(ngModel)]="registerObj.gender">
                   <ion-option value="1">Male</ion-option>
@@ -67,14 +81,8 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Password</ion-label>
-                <ion-input type="password" name='password' required [(ngModel)]="registerObj.password"></ion-input>
-              </ion-item>
-            </ion-col>
-            <ion-col>
-              <ion-item>
-                <ion-label color="primary" floating>Confirm Password</ion-label>
-                <ion-input type="password" name='confirmpass' required [(ngModel)]="registerObj.ConfirmPassword"></ion-input>
+                <ion-label>Date Of Birth</ion-label>
+                <ion-datetime name="dob" placeholder="Select Date of Birth" displayFormat="MMM DD YYYY" [max]='dobmax' [(ngModel)]="registerObj.dob"></ion-datetime>
               </ion-item>
             </ion-col>
           </ion-row>

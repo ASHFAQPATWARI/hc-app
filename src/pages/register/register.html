@@ -8,7 +8,7 @@
 
   <ion-navbar>
     <ion-title ion-text color='yellow'>
-      Create an Account
+      {{'signup' | translate}}
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -17,7 +17,7 @@
   <ion-card>
 
     <ion-card-header>
-      Please provide the following details
+      {{'provideDetails' | translate}}
     </ion-card-header>
 
     <ion-card-content>
@@ -26,13 +26,13 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>First Name</ion-label>
+                <ion-label color="primary" floating>{{'firstname' | translate}}</ion-label>
                 <ion-input name='firstname' required [(ngModel)]="registerObj.FirstName"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Last Name</ion-label>
+                <ion-label color="primary" floating>{{'lastname' | translate}}</ion-label>
                 <ion-input name='lastname' required [(ngModel)]="registerObj.LastName"></ion-input>
               </ion-item>
             </ion-col>
@@ -40,7 +40,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Email</ion-label>
+                <ion-label color="primary" floating>{{'email' | translate}}</ion-label>
                 <ion-input name='email' type="email" required [(ngModel)]="registerObj.email"></ion-input>
               </ion-item>
             </ion-col>
@@ -48,7 +48,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Mobile</ion-label>
+                <ion-label color="primary" floating>{{'mobno' | translate}}</ion-label>
                 <ion-input type="tel" name='mobile' required [(ngModel)]="registerObj.Mobile"></ion-input>
               </ion-item>
             </ion-col>
@@ -56,13 +56,13 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Password</ion-label>
+                <ion-label color="primary" floating>{{'Password' | translate}}</ion-label>
                 <ion-input type="password" name='password' required [(ngModel)]="registerObj.password"></ion-input>
               </ion-item>
             </ion-col>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Confirm Password</ion-label>
+                <ion-label color="primary" floating>{{'Confirm Password' | translate}}</ion-label>
                 <ion-input type="password" name='confirmpass' required [(ngModel)]="registerObj.ConfirmPassword"></ion-input>
               </ion-item>
             </ion-col>
@@ -70,10 +70,10 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Gender</ion-label>
+                <ion-label>{{'Gender' | translate}}</ion-label>
                 <ion-select name="gender" [(ngModel)]="registerObj.gender">
-                  <ion-option value="1">Male</ion-option>
-                  <ion-option value="2">Female</ion-option>
+                  <ion-option value="1">{{'Male' | translate}}</ion-option>
+                  <ion-option value="2">{{'Female' | translate}}</ion-option>
                 </ion-select>
               </ion-item>
             </ion-col>
@@ -81,14 +81,15 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Date Of Birth</ion-label>
-                <ion-datetime name="dob" placeholder="Select Date of Birth" displayFormat="MMM DD YYYY" [max]='dobmax' [(ngModel)]="registerObj.dob"></ion-datetime>
+                <ion-label>{{'Date Of Birth' | translate}}</ion-label>
+                <ion-datetime name="dob" placeholder="{{'Select Date of Birth' | translate}}" displayFormat="MMM DD YYYY" [max]='dobmax'
+                  [(ngModel)]="registerObj.dob"></ion-datetime>
               </ion-item>
             </ion-col>
           </ion-row>
         </ion-grid>
         <div padding-horizontal>
-          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn" [disabled]="!registerForm.form.valid">Register</button>
+          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn" [disabled]="!registerForm.form.valid">{{'signup' | translate}}</button>
         </div>
       </form>
 

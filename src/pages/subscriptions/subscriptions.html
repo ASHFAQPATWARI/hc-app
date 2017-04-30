@@ -1,7 +1,7 @@
 <ion-header>
   <ion-navbar>
     <!--<ion-toolbar>-->
-    <ion-title>Subscriptions</ion-title>
+    <ion-title>{{'subscriptions' | translate}}</ion-title>
     <ion-buttons right>
       <button ion-button icon-only (click)="openFilter()">
           <ion-icon name="md-funnel"></ion-icon>
@@ -23,7 +23,7 @@
       <ion-grid>
         <ion-row class="no-v-padding">
           <ion-col align-self-center>
-            KD {{sub.price}}
+            {{'kd' | translate}} {{sub.price}}
           </ion-col>
           <ion-col>
             <ion-buttons right>

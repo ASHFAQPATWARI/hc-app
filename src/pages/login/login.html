@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Log in</ion-title>
+    <ion-title>{{'Log in' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -9,23 +9,23 @@
 
 <ion-content>
   <div padding text-center class="login-header" margin-vertical>
-    <p>LOGIN WITH YOUR ACCOUNT</p>
+    <p>{{'LOGIN WITH YOUR ACCOUNT' | translate}}</p>
   </div>
   <form (ngSubmit)="login()" #loginForm="ngForm">
     <ion-list>
       <ion-item>
-        <ion-input placeholder="Username" clearInput name="username" [(ngModel)]="credentials.username" required></ion-input>
+        <ion-input placeholder="{{'Username' | translate}}" clearInput name="username" [(ngModel)]="credentials.username" required></ion-input>
       </ion-item>
       <ion-item>
-        <ion-input type="password" placeholder="Password" clearInput name="password" [(ngModel)]="credentials.password" required></ion-input>
+        <ion-input type="password" placeholder="{{'Password' | translate}}" clearInput name="password" [(ngModel)]="credentials.password" required></ion-input>
       </ion-item>
     </ion-list>
     <div padding-horizontal>
-      <button type="submit" ion-button block color='lightGreen' round=false class="login-btn" [disabled]="!loginForm.form.valid">Login</button>
+      <button type="submit" ion-button block color='lightGreen' round=false class="login-btn" [disabled]="!loginForm.form.valid">{{'Log in' | translate}}</button>
     </div>
-    <p ion-text margin-top text-center color='lightGreen' class="forgot-password"><b> FORGOT PASSWORD?</b></p>
+    <p ion-text margin-top text-center color='lightGreen' class="forgot-password"><b>{{'FORGOT PASSWORD?' | translate}}</b></p>
   </form>
   <div class="register-btn" text-center>
-    <button ion-button outline (click)="openRegister()">REGISTER</button>
+    <button ion-button outline (click)="openRegister()">{{'signup' | translate}}</button>
   </div>
 </ion-content>

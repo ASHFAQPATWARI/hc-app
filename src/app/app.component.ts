@@ -57,13 +57,13 @@ export class MyApp {
       }
     );
     this.pages = [
-      { title: 'Book A Meal', component: SubscriptionsPage, icon: 'restaurant' },
-      { title: 'Book An Appointment', component: DoctorsPage, icon: 'calendar' }
+      { title: 'bookameal', component: SubscriptionsPage, icon: 'restaurant' },
+      { title: 'bookAppointment', component: DoctorsPage, icon: 'calendar' }
     ];
 
     this.loggedInPages = [
-      { title: 'My Subscriptions', component: MySubscriptions, icon: 'list' },
-      { title: 'My Account', component: MyAccount, icon: 'person' }
+      { title: 'mySubscriptions', component: MySubscriptions, icon: 'list' },
+      { title: 'myaccount', component: MyAccount, icon: 'person' }
     ]
 
   }

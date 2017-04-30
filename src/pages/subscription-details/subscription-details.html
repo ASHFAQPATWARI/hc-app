@@ -30,27 +30,25 @@
 
       <div class="sub-details">
         <div class="sub-head">
-          Description
+          {{'description' | translate}}
         </div>
-        <p text-justify>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-          aliqua.
-        </p>
+        <p text-justify>{{subsciption.desc}}</p>
         <ion-list>
           <ion-item>
             <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
-            Max freezes.no: {{subsciption.totalfreeze}}
+            {{'maxFreezeText' | translate}} {{subsciption.totalfreeze}}
           </ion-item>
           <ion-item>
             <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
-            Max freezes days: {{subsciption.freezedays}}
+            {{'maxfreezedays' | translate}} {{subsciption.freezedays}}
           </ion-item>
           <ion-item>
             <ion-icon name="ios-arrow-round-forward-outline" item-left></ion-icon>
-            Total days: {{subsciption.days}}
+            {{'totaldays' | translate}} {{subsciption.days}}
           </ion-item>
         </ion-list>
         <div class="sub-head">
-          Full Membership includes
+          {{'fullmemIncludes' | translate}}
         </div>
         <ion-list>
           <ion-item *ngFor="let cat of subsciption.cats">
@@ -61,7 +59,7 @@
         <ion-grid>
           <ion-row class="no-v-padding">
             <ion-col align-self-center>
-              KD 12
+              {{'kd' | translate}} 12
             </ion-col>
             <ion-col>
               <ion-buttons right>

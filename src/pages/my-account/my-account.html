@@ -7,18 +7,18 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>My Details</ion-title>
+    <ion-title>{{'My Details' | translate}}</ion-title>
   </ion-navbar>
   <ion-toolbar color="white">
     <ion-segment [(ngModel)]="accountTab" (ngModelChange)="tabChanged()">
       <ion-segment-button value="info">
-        Info
+        {{'Info' | translate}}
       </ion-segment-button>
       <ion-segment-button value="address">
-        Addresses
+        {{'Addresses' | translate}}
       </ion-segment-button>
       <ion-segment-button value="chngPass">
-        Password
+        {{'Password' | translate}}
       </ion-segment-button>
     </ion-segment>
   </ion-toolbar>
@@ -30,28 +30,28 @@
       <ion-row>
         <ion-col>
           <ion-item>
-            <ion-label color="primary" floating>First Name</ion-label>
+            <ion-label color="primary" floating>{{'firstname' | translate}}</ion-label>
             <ion-input type="text" name="custfirstname" [(ngModel)]="accountInfo.firstname"></ion-input>
           </ion-item>
         </ion-col>
         <ion-col>
           <ion-item>
-            <ion-label color="primary" floating>Last Name</ion-label>
+            <ion-label color="primary" floating>{{'lastname' | translate}}</ion-label>
             <ion-input type="text" name="custlastname" [(ngModel)]="accountInfo.lastname"></ion-input>
           </ion-item>
         </ion-col>
       </ion-row>
       <ion-item>
-        <ion-label color="primary" floating>Email</ion-label>
+        <ion-label color="primary" floating>{{'email' | translate}}</ion-label>
         <ion-input type="email" name="custemail" [(ngModel)]="accountInfo.email"></ion-input>
       </ion-item>
       <ion-item>
-        <ion-label color="primary" floating>Mobile Number</ion-label>
+        <ion-label color="primary" floating>{{'mobno' | translate}}</ion-label>
         <ion-input type="tel" name="custmobile" [(ngModel)]="accountInfo.mobile"></ion-input>
       </ion-item>
       <ion-footer>
         <div padding-horizontal class="btn">
-          <button type="submit" ion-button block color='lightGreen' round=false>Update</button>
+          <button type="submit" ion-button block color='lightGreen' round=false>{{'Update' | translate}}</button>
         </div>
       </ion-footer>
     </div>
@@ -59,7 +59,7 @@
     <div *ngSwitchCase="'address'" class="address">
       <ion-list>
         <ion-list-header>
-          Saved Address
+          {{'Saved Address' | translate}}
         </ion-list-header>
 
         <ion-item-sliding>
@@ -107,7 +107,7 @@
       </ion-list>
       <ion-footer>
         <div padding-horizontal class="btn">
-          <button type="button" ion-button block color='lightGreen' (click)='openAddress()' round=false>Add Address</button>
+          <button type="button" ion-button block color='lightGreen' (click)='openAddress()' round=false>{{'Add Address' | translate}}</button>
         </div>
       </ion-footer>
     </div>
@@ -115,20 +115,20 @@
     <div *ngSwitchCase="'chngPass'">
       <form (ngSubmit)="changePassword()" #changePass="ngForm">
         <ion-item>
-          <ion-label color="primary" floating>Current Password</ion-label>
+          <ion-label color="primary" floating>{{'Current Password' | translate}}</ion-label>
           <ion-input type="password" required name='currentpass' [(ngModel)]="changePassObj.oldpassword"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="primary" floating>New Password</ion-label>
+          <ion-label color="primary" floating>{{'New Password' | translate}}</ion-label>
           <ion-input type="password" required name='newpass' [(ngModel)]="changePassObj.NewPassword"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label color="primary" floating>Conform Password</ion-label>
+          <ion-label color="primary" floating>{{'Confirm Password' | translate}}</ion-label>
           <ion-input type="password" required name='confirmpass' [(ngModel)]="changePassObj.ConfirmPassword"></ion-input>
         </ion-item>
         <ion-footer>
           <div padding-horizontal class="btn">
-            <button type="submit" ion-button block color='lightGreen' round=false [disabled]="!changePass.form.valid">Update Password</button>
+            <button type="submit" ion-button block color='lightGreen' round=false [disabled]="!changePass.form.valid">{{'Update Password' | translate}}</button>
           </div>
         </ion-footer>
       </form>

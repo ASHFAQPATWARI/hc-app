@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Edit Subscription</ion-title>
+    <ion-title>{{'Edit Subscription' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -18,13 +18,13 @@
     <ion-row *ngFor="let person of subscrption.persons">
       <ion-col>
         <ion-item>
-          <ion-input type="text" [(ngModel)]="person.name" placeholder="Name"></ion-input>
+          <ion-input type="text" [(ngModel)]="person.name" placeholder="{{'Name' | translate}}"></ion-input>
         </ion-item>
       </ion-col>
       <ion-col text-right>
         <button ion-button icon-left color='lightGreen' (click)='editSubscription(person)'>
         <ion-icon name="ios-create-outline"></ion-icon>
-        <div>Edit </div>
+        <div>{{'Edit' | translate}}</div>
       </button>
       </ion-col>
     </ion-row>

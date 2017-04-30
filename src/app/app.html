@@ -3,7 +3,7 @@
     <div class="no-line-height">
       <img src="assets/images/login-img.jpg">
       <a class="login-link" menuClose (click)='openLogin()' *ngIf="!isLoggedIn">
-        Log in / Sign up
+        {{'loginSign' | translate}}
         </a>
       <ion-row class="loggedin" align-items-center>
         <ion-col *ngIf="isLoggedIn"> {{userInfo.userName}}</ion-col>
@@ -38,16 +38,16 @@
     <ion-list no-lines>
       <button menuClose ion-item (click)="setRoot('home')">
         <ion-icon name="home" item-left></ion-icon>
-        Home
+        {{'home' | translate}}
       </button>
       <button menuClose ion-item *ngFor="let p of pages" (click)="pushPage(p)">
         <ion-icon [name]="p.icon" item-left></ion-icon>
-        {{p.title}}
+        {{p.title | translate}}
       </button>
       <ng-container *ngIf="isLoggedIn">
         <button menuClose ion-item *ngFor="let p of loggedInPages" (click)="pushPage(p)">
         <ion-icon [name]="p.icon" item-left></ion-icon>
-        {{p.title}}
+        {{p.title | translate}}
       </button>
       </ng-container>
 
@@ -56,7 +56,7 @@
       <ion-toolbar>
         <button menuClose ion-item (click)="doLogout()">
         <ion-icon name="log-out" item-left></ion-icon>
-        Log out
+        {{'logout' | translate}}
       </button>
       </ion-toolbar>
     </ion-footer>

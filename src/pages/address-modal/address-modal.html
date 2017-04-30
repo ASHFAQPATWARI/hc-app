@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Add Address</ion-title>
+    <ion-title>{{'Add Address' | translate}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -17,7 +17,7 @@
   <ion-card>
 
     <ion-card-header>
-      Please provide the following details:
+      {{'provideDetails' | translate}}
     </ion-card-header>
 
     <ion-card-content no-padding padding-vertical>
@@ -26,7 +26,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Address title</ion-label>
+                <ion-label color="primary" floating>{{"Address title" | translate}}</ion-label>
                 <ion-input name='profileName' required [(ngModel)]="address.profilename"></ion-input>
               </ion-item>
             </ion-col>
@@ -34,7 +34,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label>Area</ion-label>
+                <ion-label>{{'Area' | translate}}</ion-label>
                 <ion-select name="area" [(ngModel)]="address.areaid">
                   <ion-option [value]="area.id" *ngFor="let area of areas">{{area.name}}</ion-option>
                 </ion-select>
@@ -44,7 +44,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Block</ion-label>
+                <ion-label color="primary" floating>{{'Block' | translate}}</ion-label>
                 <ion-input name='block' type="text" required [(ngModel)]="address.block"></ion-input>
               </ion-item>
             </ion-col>
@@ -52,7 +52,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Street</ion-label>
+                <ion-label color="primary" floating>{{'Street' | translate}}</ion-label>
                 <ion-input type="text" name='street' required [(ngModel)]="address.street"></ion-input>
               </ion-item>
             </ion-col>
@@ -60,7 +60,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Additional Direction</ion-label>
+                <ion-label color="primary" floating>{{'Additional Direction' | translate}}</ion-label>
                 <ion-input type="text" name='adirectiions' [(ngModel)]="address.additional"></ion-input>
               </ion-item>
             </ion-col>
@@ -68,7 +68,7 @@
           <ion-row>
             <ion-col>
               <ion-item>
-                <ion-label color="primary" floating>Mobile Number</ion-label>
+                <ion-label color="primary" floating>{{'mobno' | translate}}</ion-label>
                 <ion-input type="tel" name='mobile' required [(ngModel)]="address.mobile"></ion-input>
               </ion-item>
             </ion-col>
@@ -76,7 +76,7 @@
 
         </ion-grid>
         <div padding-horizontal>
-          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn" [disabled]="!addressForm.form.valid">Add Address</button>
+          <button type="submit" ion-button block color='lightGreen' round=false class="register-btn" [disabled]="!addressForm.form.valid">{{'Add Address' | translate}}</button>
         </div>
       </form>
 

@@ -5,12 +5,7 @@ page-my-account {
   ion-list-header {
     border: 0 !important;
   }
-  .address {
-    ion-item {
-      padding-left: 0!important;
-    }
-    ion-list-header {
-      padding-left: 0!important;
-    }
+  ion-footer {
+    position: fixed;
   }
 }

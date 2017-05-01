@@ -17,7 +17,7 @@ import { Utility } from "../../providers/utility";
 export class MyAccount {
   accountTab;
   accountInfo: any = {};
-  addresses;
+  addresses: any = [];
   changePassObj: any = {};
   constructor(public navCtrl: NavController, public navParams: NavParams, public accountService: MyaccountService,
     public alertCtrl: AlertController, public utilityService: Utility) {
@@ -31,14 +31,18 @@ export class MyAccount {
 
   tabChanged() {
     if (this.accountTab === 'address') {
-      if (!this.addresses) {
-        this.addresses = this.accountService.getCustAddresses().subscribe(
+      if (!this.addresses.length) {
+        this.accountService.getCustAddresses().subscribe(
           data => {
-
+            this.addresses = data.result;
           }
         );
       }
     }
+  }
+
+  adddAddressCallback(address) {
+    this.addresses.push(address);
   }
 
   ionViewDidLoad() {
@@ -46,7 +50,7 @@ export class MyAccount {
   }
 
   openAddress() {
-    this.navCtrl.push(AddressModal);
+    this.navCtrl.push(AddressModal, { adddAddressCallback: this.adddAddressCallback.bind(this) });
   }
 
   changePassword() {

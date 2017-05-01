@@ -3,6 +3,7 @@ import { NavController, NavParams } from 'ionic-angular';
 
 import { Utility } from "../../providers/utility";
 import { MyaccountService } from "../../providers/myaccount-service";
+import * as _ from "lodash";
 
 /**
  * Generated class for the AddressModal page.
@@ -15,10 +16,17 @@ import { MyaccountService } from "../../providers/myaccount-service";
   templateUrl: 'address-modal.html',
 })
 export class AddressModal {
-  address: any = {};
+  address: any = {
+    id: 0,
+    avenue: '',
+    building: '',
+    floor: ''
+  };
   areas;
+  callback;
   constructor(public navCtrl: NavController, public navParams: NavParams, public utilityService: Utility, public accountService: MyaccountService) {
     this.areas = this.utilityService.getHomeData().areas;
+    this.callback = this.navParams.get('adddAddressCallback');
   }
 
   ionViewDidLoad() {
@@ -28,7 +36,10 @@ export class AddressModal {
   addAddress() {
     this.accountService.saveAddress(this.address).subscribe(
       data => {
-        console.log('add address response', data);
+        if (data.sucess) {
+          this.address.id = _.toInteger(data.unique);
+          this.callback(this.address);
+        }
       }
     );
   }

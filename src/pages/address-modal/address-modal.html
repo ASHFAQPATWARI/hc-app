@@ -60,6 +60,22 @@
           <ion-row>
             <ion-col>
               <ion-item>
+                <ion-label color="primary" floating>{{'Building' | translate}}</ion-label>
+                <ion-input type="text" name='street' [(ngModel)]="address.building"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
+                <ion-label color="primary" floating>{{'Floor' | translate}}</ion-label>
+                <ion-input type="text" name='street' [(ngModel)]="address.floor"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <ion-item>
                 <ion-label color="primary" floating>{{'Additional Direction' | translate}}</ion-label>
                 <ion-input type="text" name='adirectiions' [(ngModel)]="address.additional"></ion-input>
               </ion-item>

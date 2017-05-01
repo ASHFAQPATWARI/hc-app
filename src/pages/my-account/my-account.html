@@ -61,50 +61,40 @@
         <ion-list-header>
           {{'Saved Address' | translate}}
         </ion-list-header>
-
-        <ion-item-sliding>
-          <ion-item>
-            <ion-avatar item-left>
-              <img src="../../assets/images/Kuwait-map.jpg">
-            </ion-avatar>
-            <h2>Home Address</h2>
-            <p>Saleh Al Mubarak Streetr, Kuwait City</p>
-          </ion-item>
-          <ion-item-options>
-            <button ion-button color="light" icon-left>
-              <ion-icon name="create"></ion-icon>
-            Edit
-          </button>
-            <button ion-button color="light" icon-left>
-              <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-
-
-          </ion-item-options>
-        </ion-item-sliding>
-        <ion-item-sliding>
-          <ion-item>
-            <ion-avatar item-left>
-              <img src="../../assets/images/Kuwait-map.jpg">
-            </ion-avatar>
-            <h2>Home Address</h2>
-            <p>Saleh Al Mubarak Streetr, Kuwait City</p>
-          </ion-item>
-          <ion-item-options>
-            <button ion-button color="light" icon-left>
-              <ion-icon name="create"></ion-icon>
-            Edit
-          </button>
-            <button ion-button color="light" icon-left>
-              <ion-icon name="trash"></ion-icon>
-          Delete
-        </button>
-
-
-          </ion-item-options>
-        </ion-item-sliding>
       </ion-list>
+      <ion-card *ngFor="let address of addresses">
+        <ion-item>
+          <h2>{{address.profilename}}</h2>
+          <p>{{address.areaid}}</p>
+        </ion-item>
+
+        <ion-card-content>
+          <p>
+            <ion-note>
+              {{address.block}}
+            </ion-note>
+            <ion-note>
+              {{address.street}}
+            </ion-note>
+          </p>
+        </ion-card-content>
+
+        <ion-row>
+          <ion-col>
+            <button ion-button icon-left full small>
+              <ion-icon name="create"></ion-icon>
+              <div>Edit</div>
+            </button>
+          </ion-col>
+          <ion-col>
+            <button ion-button icon-left full small>
+              <ion-icon name="trash"></ion-icon>
+              <div>Delete</div>
+            </button>
+          </ion-col>
+        </ion-row>
+
+      </ion-card>
       <ion-footer>
         <div padding-horizontal class="btn">
           <button type="button" ion-button block color='lightGreen' (click)='openAddress()' round=false>{{'Add Address' | translate}}</button>

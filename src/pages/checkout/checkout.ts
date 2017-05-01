@@ -81,9 +81,11 @@ export class Checkout {
             date.formattedDate = this.utilityService.getFormattedDate(new Date(date.mdate));
             date.showDetails = false;
             _.forEach(date.mealtypes, function (category) {
-              _.forEach(category, function (menuSection) {
-                _.forEach(menuSection, function (menuSection) {
-
+              _.forEach(category.menusections, function (menuSection) {
+                _.forEach(menuSection.menuitems, function (item) {
+                  if (item.selected) {
+                    menuSection.selectedItem = item;
+                  }
                 });
               });
             });

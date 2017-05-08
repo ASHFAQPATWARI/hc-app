@@ -3,9 +3,11 @@ import { NavController, NavParams, ModalController, ActionSheetController, Toast
 import { Filter } from "../filter/filter";
 import { SubscriptionDetailsPage } from "../subscription-details/subscription-details";
 import { Checkout } from "../checkout/checkout";
+import { Login } from "../login/login";
 
 import { Subscriptions } from "../../providers/subscriptions";
 import { CartService } from "../../providers/cart-service";
+import { Utility } from "../../providers/utility";
 
 import * as _ from "lodash";
 
@@ -29,7 +31,7 @@ export class SubscriptionsPage implements OnDestroy {
   cartChangeListener: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public alertCtrl: AlertController,
-    public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions, public cartService: CartService) {
+    public actionSheetCtrl: ActionSheetController, public toastCntrl: ToastController, public subscriptionsService: Subscriptions, public cartService: CartService, public utilityService: Utility) {
 
     this.cartObject = this.cartService.getCartObject();
     this.cartChangeListener = this.cartService.subscribeCartChanges().subscribe(
@@ -64,7 +66,12 @@ export class SubscriptionsPage implements OnDestroy {
   }
 
   openCheckout() {
-    this.navCtrl.push(Checkout);
+    if (this.utilityService.getCustomerObj()) {
+      this.navCtrl.push(Checkout);
+    } else {
+      this.navCtrl.push(Login, { openPage: 'checkout' });
+    }
+
   }
 
   updateFilterObject(filterObj) {

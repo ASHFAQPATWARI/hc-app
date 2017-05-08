@@ -4,6 +4,8 @@ import { NavController, NavParams, ViewController, AlertController, ToastControl
 import { LoginService } from "../../providers/login";
 import { Utility } from "../../providers/utility";
 
+import { Checkout } from "../checkout/checkout";
+
 /**
  * Generated class for the Register page.
  *
@@ -18,9 +20,14 @@ export class Register {
   registerObj: any = {
     gender: 1,
   };
+  returnPage;
+
   dobmax = this.utilityService.formatDateyyyymmdd(new Date());
   constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public loginService: LoginService,
     public utilityService: Utility, public alertCtrl: AlertController, public toastCtrl: ToastController) {
+    if (this.navParams.get('openPage')) {
+      this.returnPage = this.navParams.get('openPage');
+    }
   }
 
   ionViewDidLoad() {
@@ -47,7 +54,7 @@ export class Register {
     }
     this.loginService.doRegister(this.registerObj).subscribe(
       data => {
-        if (data.Succeeded) {
+        if (data.result.sucess) {
           const credentials = {
             username: this.registerObj.email,
             password: this.registerObj.password
@@ -60,7 +67,15 @@ export class Register {
               });
               toast.present();
               this.loginService.sendLoginChanges();
-              this.navCtrl.popToRoot();
+              if (this.returnPage == 'checkout') {
+                this.navCtrl.pop().then(() => {
+                  this.navCtrl.push(Checkout);
+                })
+              } else {
+                this.navCtrl.popToRoot();
+              }
+
+
             }, (error) => {
               const alert = this.alertCtrl.create({
                 title: 'Error',
@@ -73,7 +88,7 @@ export class Register {
         } else {
           const alert = this.alertCtrl.create({
             title: 'Error',
-            subTitle: data.Errors[0],
+            subTitle: data.result.errs[0].err,
             buttons: ['OK']
           });
           alert.present();

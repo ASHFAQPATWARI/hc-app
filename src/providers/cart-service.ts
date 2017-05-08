@@ -41,8 +41,10 @@ export class CartService {
 
     for (let i = 0; i < tempCartItem.person; i++) {
       tempCartItem.persons.push({
-        name: '',
-        menuSelection: undefined
+        name: 'Person ' + i,
+        menuSelection: undefined,
+        types: subscription.types,
+        dietType: subscription.types[0],
       });
     }
 

@@ -14,13 +14,27 @@
 
 
 <ion-content>
-  <ion-card>
-    <ion-row *ngFor="let person of subscrption.persons">
+  <ion-card *ngFor="let person of subscrption.persons">
+    <ion-row>
       <ion-col>
         <ion-item>
           <ion-input type="text" [(ngModel)]="person.name" placeholder="{{'Name' | translate}}"></ion-input>
         </ion-item>
       </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item>
+          <ion-label>Diet Type</ion-label>
+          <ion-select [(ngModel)]="person.dietType">
+            <ion-option value="type" *ngFor="let type of person.types">
+              {{type.name}}
+            </ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
       <ion-col text-right>
         <button ion-button icon-left color='lightGreen' (click)='editSubscription(person)'>
         <ion-icon name="ios-create-outline"></ion-icon>

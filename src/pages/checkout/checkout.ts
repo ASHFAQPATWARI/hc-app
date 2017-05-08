@@ -19,6 +19,7 @@ export class Checkout {
   allowMenuCall = false;
   constructor(public navCtrl: NavController, public navParams: NavParams, public cartService: CartService, public utilityService: Utility, public alertCtrl: AlertController, public translate: TranslateService) {
     this.cartObject = this.cartService.getCartObject();
+    console.log('cartObject ', this.cartObject);
     // this.cartObject = _.map(this.cartObject.cartitems, (sub: any) => {
     //   if(sub.startdate) {
     //     if(typeof sub.startdate !== 'string') {
@@ -55,7 +56,24 @@ export class Checkout {
   }
 
   removeCartItem(subid) {
-    this.cartObject = this.cartService.removeCartItem(subid);
+    let prompt = this.alertCtrl.create({
+      title: 'Alert!',
+      message: "Are you sure want to delete subscription?",
+      buttons: [
+        {
+          text: 'Cancel',
+          handler: data => {
+          }
+        },
+        {
+          text: 'Delete',
+          handler: data => {
+            this.cartObject = this.cartService.removeCartItem(subid);
+          }
+        }
+      ]
+    });
+    prompt.present();
   }
 
   openSubscription() {

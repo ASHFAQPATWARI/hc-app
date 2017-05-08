@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ModalController, AlertController, ToastController } from 'ionic-angular';
 import { Register } from "../register/register";
 import { LoginService } from "../../providers/login";
+import { Checkout } from "../checkout/checkout";
 
 /**
  * Generated class for the Login page.
@@ -19,9 +20,13 @@ export class Login {
     username: '',
     password: ''
   }
-
+  returnPage;
   constructor(public navCtrl: NavController, public navParams: NavParams, public modalCtrl: ModalController, public loginService: LoginService,
     public alertCtrl: AlertController, public toastCtrl: ToastController) {
+    if (this.navParams.get('openPage')) {
+      //navCtrl.push(Checkout);
+      this.returnPage = this.navParams.get('openPage');
+    }
   }
 
   login() {
@@ -33,7 +38,15 @@ export class Login {
         });
         toast.present();
         this.loginService.sendLoginChanges();
-        this.navCtrl.popToRoot();
+        if (this.returnPage) {
+          if (this.returnPage == 'checkout') {
+            this.navCtrl.pop().then(() => {
+              this.navCtrl.push(Checkout);
+            })
+          }
+        } else {
+          this.navCtrl.popToRoot();
+        }
       }, (error) => {
         const alert = this.alertCtrl.create({
           title: 'Log In Failed',
@@ -46,7 +59,7 @@ export class Login {
   }
 
   openRegister() {
-    this.navCtrl.push(Register);
+    this.navCtrl.push(Register, { openPage: this.navParams.get('openPage') });
   }
 
 }
